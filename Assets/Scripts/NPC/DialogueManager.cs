@@ -49,6 +49,9 @@ public class DialogueManager : Singleton<DialogueManager>
 
     public void Update()
     {
+
+        // TODO: Clean this up its giving me anxiety
+
         if(dialogueState == DIALOGUE_STATE.ACTIVE)
         {
             currentTickerTime += Time.deltaTime;
@@ -65,7 +68,7 @@ public class DialogueManager : Singleton<DialogueManager>
                 }
             }
 
-            if (InputManager.GetInstance().GetKeyDown(InputManager.ACTION.INTERACT))
+            if (InputManager.GetInstance().GetKeyDown(InputManager.ACTION.INTERACT) && !currentDialogueString.Equals(""))
             {
                 currentDialogueString = currentDialogue.GetCurrentText();
                 dialogueState = DIALOGUE_STATE.WAITING;

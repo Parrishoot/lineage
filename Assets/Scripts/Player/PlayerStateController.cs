@@ -186,7 +186,6 @@ public class PlayerStateController : Mover
 
         // Update the animator
         // TODO: Update this to take in a separate player animation enum map value
-        Debug.Log((int)playerMovementState);
         animator.SetInteger(ANIMATOR_MOVEMENT_PARAMETER_NAME, (int) playerMovementState);
         lastDirection = x;
 
@@ -209,6 +208,10 @@ public class PlayerStateController : Mover
     }
 
     public void AddInteractable(Interactable interactable)
+    // TODO: Change this to be a trigger on the player instead of the 
+    // objects such that we can queue up interactable objects and set an
+    // active one rather than resetting this potentially in the middle 
+    // of an interaction
     {
         this.interactable = interactable;
     }
