@@ -1,0 +1,106 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8176020379087723482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d019ba96bc86e8042b8c07c0f34f8d3f, type: 3}
+  m_Name: ItemQuestNodeMetadata
+  m_EditorClassIdentifier: 
+  questNodeType: 2
+  itemName: Gun
+--- !u!114 &-6318487739203440241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d019ba96bc86e8042b8c07c0f34f8d3f, type: 3}
+  m_Name: ItemQuestNodeMetadata
+  m_EditorClassIdentifier: 
+  questNodeType: 2
+  itemName: default
+--- !u!114 &-5285215872873962486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d019ba96bc86e8042b8c07c0f34f8d3f, type: 3}
+  m_Name: ItemQuestNodeMetadata
+  m_EditorClassIdentifier: 
+  questNodeType: 2
+  itemName: default
+--- !u!114 &-463185804317561633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db371ff850d523843ab3541c46af332f, type: 3}
+  m_Name: ConversationQuestNodeMetadata
+  m_EditorClassIdentifier: 
+  questNodeType: 0
+  npcName: Garfield
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad1d263d18d8c774185972bbf6b1c1c0, type: 3}
+  m_Name: Quest
+  m_EditorClassIdentifier: 
+  questNodes:
+  - {fileID: -463185804317561633}
+  - {fileID: 7532131059544490365}
+  - {fileID: 3350385919891798931}
+  - {fileID: -8176020379087723482}
+  questName: Meghan's Qyest
+  questDescription: This is a test of the quests
+  accessibleBranches: 
+--- !u!114 &3350385919891798931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db371ff850d523843ab3541c46af332f, type: 3}
+  m_Name: ConversationQuestNodeMetadata
+  m_EditorClassIdentifier: 
+  questNodeType: 0
+  npcName: Odie
+--- !u!114 &7532131059544490365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d019ba96bc86e8042b8c07c0f34f8d3f, type: 3}
+  m_Name: ItemQuestNodeMetadata
+  m_EditorClassIdentifier: 
+  questNodeType: 2
+  itemName: Lasagna
