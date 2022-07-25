@@ -46,7 +46,7 @@ public class DefaultFiringMechanism : FiringMechanismController
 
             // TODO: Change this to use the InputManager cooldown system
             // Instead of splitting it between WeaponController and firing mechanism
-            if(inputManager.GetKeyDown(InputManager.ACTION.SHOOT))
+            if(inputManager.GetKey(InputManager.ACTION.SHOOT))
             {
                 firingMechanismState = FIRING_MECHANISM_STATES.PENDING;
                 currentShotHeldTime = powerShotThresholdTime;
@@ -68,12 +68,12 @@ public class DefaultFiringMechanism : FiringMechanismController
                 firingMechanismState = superShotZoneController.isSuccessfulCollision() ? FIRING_MECHANISM_STATES.POWER_SHOT : FIRING_MECHANISM_STATES.REGULAR_SHOT;
                 progressBarParent.SetActive(false);
             }
-        }
 
-        if(currentShotIndicator.transform.position.x > pathEnd.position.x)
-        {
-            firingMechanismState = FIRING_MECHANISM_STATES.FAILURE;
-            progressBarParent.SetActive(false);
+            if (currentShotIndicator.transform.position.x > pathEnd.position.x)
+            {
+                firingMechanismState = FIRING_MECHANISM_STATES.REGULAR_SHOT;
+                progressBarParent.SetActive(false);
+            }
         }
     }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NPCController : Interactable
 {
-
+    public AudioClip voice;
 
     private Queue<Dialogue> questDialogue;
 
@@ -30,6 +30,6 @@ public class NPCController : Interactable
     public override void Interact()
     {
         interactionState = Interactable.INTERACTION_STATE.IN_PROGRESS;
-        DialogueManager.GetInstance().SetDialogue(randomDialogueOptions[0]);
+        DialogueManager.GetInstance().SetDialogue(randomDialogueOptions[0], voice);
     }
 }

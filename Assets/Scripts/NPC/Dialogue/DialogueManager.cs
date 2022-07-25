@@ -2,11 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
+using System.Text;
+using System.Text.RegularExpressions;
 
 public class DialogueManager : Singleton<DialogueManager>
 {
 
     public DialogueTextController dialogueTextController;
+
+    public AudioSource audioSouce;
+
 
     private enum DIALOGUE_STATE
     {
@@ -16,7 +22,7 @@ public class DialogueManager : Singleton<DialogueManager>
     }
 
     private DIALOGUE_STATE dialogueState = DIALOGUE_STATE.INACTIVE;
-    
+
     // Variables to keep track of current dialogue
     private string currentDialogueString = "";
     private int currentDialogueCharacterIndex = 0;
@@ -25,17 +31,19 @@ public class DialogueManager : Singleton<DialogueManager>
     // The active piece of dialogue
     private Dialogue currentDialogue = null;
    
-    public void SetDialogue(Dialogue dialogue)
+    public void SetDialogue(Dialogue dialogue, AudioClip voice)
     {
         dialogue.BeginDialogue();
         currentDialogue = dialogue;
         dialogueTextController.SetGUIEnabled(true);
         dialogueState = DIALOGUE_STATE.ACTIVE;
 
-        ResetDialogueVariables();
+        audioSouce.clip = voice;
+
+        ResetDialogueVariables(currentDialogue.GetCurrentText().Length);
     }
 
-    private void ResetDialogueVariables()
+    private void ResetDialogueVariables(int stringLength = 0)
     {
         currentDialogueString = "";
         currentDialogueCharacterIndex = 0;
@@ -58,24 +66,29 @@ public class DialogueManager : Singleton<DialogueManager>
 
             if(currentTickerTime >= currentDialogue.GetCurrentTickerTime())
             {
+                if(!audioSouce.isPlaying)
+                {
+                    audioSouce.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
+                    audioSouce.Play();
+                }
                 currentDialogueString += currentDialogue.GetCurrentText()[currentDialogueCharacterIndex++];
                 currentTickerTime = 0f;
 
-                if(currentDialogue.GetCurrentText().Equals(currentDialogueString))
+                if(currentDialogue.GetCurrentText().Equals(currentDialogueString.ToString()))
                 {
                     dialogueState = DIALOGUE_STATE.WAITING;
                     dialogueTextController.SetContinueIndicator(true);
                 }
             }
 
-            if (InputManager.GetInstance().GetKeyDown(InputManager.ACTION.INTERACT) && !currentDialogueString.Equals(""))
+            if (InputManager.GetInstance().GetKeyDown(InputManager.ACTION.INTERACT) && !Regex.IsMatch(currentDialogueString.ToString(), @"^$", RegexOptions.None))
             {
                 currentDialogueString = currentDialogue.GetCurrentText();
                 dialogueState = DIALOGUE_STATE.WAITING;
                 dialogueTextController.SetContinueIndicator(true);
             }
 
-            dialogueTextController.SetText(currentDialogueString);
+            dialogueTextController.SetText(currentDialogueString.ToString());
         }
         else if(dialogueState == DIALOGUE_STATE.WAITING)
         {
@@ -90,7 +103,7 @@ public class DialogueManager : Singleton<DialogueManager>
                 }
                 else
                 {
-                    ResetDialogueVariables();
+                    ResetDialogueVariables(currentDialogue.GetCurrentText().Length);
                     dialogueState = DIALOGUE_STATE.ACTIVE;
                     dialogueTextController.SetContinueIndicator(false);
                 }

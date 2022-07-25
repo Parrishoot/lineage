@@ -253,7 +253,7 @@ MonoBehaviour:
   superShotZone: {fileID: 6606453795137139960}
   currentShotIndicator: {fileID: 2294692929780509124}
   progressBarParent: {fileID: 651012337938967143}
-  indicatorMovementSpeed: 1
+  indicatorMovementSpeed: 2
   superShotZoneBorderThreshold: 0.2
 --- !u!1 &6606453795137139960
 GameObject:
