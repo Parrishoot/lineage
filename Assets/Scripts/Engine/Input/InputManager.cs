@@ -6,6 +6,8 @@ using System.Linq;
 public class InputManager : Singleton<InputManager>
 {
 
+    public int something;
+
     public Dictionary<ACTION, KeyCode> inputKeys = new Dictionary<ACTION, KeyCode>();
 
     private Dictionary<ACTION, float> keyCooldowns = new Dictionary<ACTION, float>();

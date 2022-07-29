@@ -43,7 +43,6 @@ public class WeaponController : MonoBehaviour
             projectileController.InitializeValues(weapon.projectileType, CameraController.GetVectorToMouse(gameObject.transform.position), addedAttributes);
 
             // Reset the cooldown
-            Debug.Log("Resetting");
             currentCooldown = weapon.cooldown;
             firingMechanismController.Reset();
         }
