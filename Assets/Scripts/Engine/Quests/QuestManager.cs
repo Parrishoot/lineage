@@ -6,7 +6,7 @@ public class QuestManager
 
     private QuestMetadata questMetaData;
 
-    private enum QUEST_STATES
+    public enum QUEST_STATES
     {
         UNDISCOVERED,
         ACTIVE,
@@ -45,6 +45,16 @@ public class QuestManager
         }
     }
 
+    public QUEST_STATES GetQuestState()
+    {
+        return questState;
+    }
+
+    public int GetQuestNodeIndex()
+    {
+        return questNodeIndex;
+    }
+
     public override string ToString()
     {
         return questMetaData.questName.ToString() + " : " + questMetaData.questDescription;
@@ -58,6 +68,13 @@ public class QuestManager
                              String.Join("\n", questNodeManagers));
     }
 
+    public string GetStatus()
+    {
+        return string.Format("INDEX: {0}\nSTATE: {1}\n",
+                             questNodeIndex,
+                             questState.ToString());
+    }
+
     public string GetQuestHeaderString()
     {
         return questMetaData.questName;
@@ -66,6 +83,17 @@ public class QuestManager
     public string GetQuestNodeHeaderString()
     {
         return "- " + String.Join("\n- ", questNodeManagers);
+    }
+
+    public void Progress()
+    {
+        questNodeIndex = Math.Min(questNodeIndex + 1, questMetaData.questNodes.Length - 1);
+    }
+
+    public void LoadQuestFromSave(QuestSaveData questSaveData)
+    {
+        questNodeIndex = questSaveData.questNodeIndex;
+        questState = questSaveData.questState;
     }
 
 }

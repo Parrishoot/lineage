@@ -23,7 +23,5 @@ public class Singleton<T> : MonoBehaviour
         {
             _instance = this as T;
         }
-
-        DontDestroyOnLoad(gameObject);
     }
 }
