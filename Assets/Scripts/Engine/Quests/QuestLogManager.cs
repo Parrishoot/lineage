@@ -41,12 +41,12 @@ public class QuestLogManager : Singleton<QuestLogManager>
 
     public void SaveActiveQuest()
     {
-        SaveManager.GetInstance().SaveQuestState(GetActiveQuestManager());
+        SaveManager.GetInstance().SaveQuest(GetActiveQuestManager());
     }
 
     public void LoadActiveQuest()
     {
-        GetActiveQuestManager().LoadQuestFromSave(SaveManager.GetInstance().LoadQuest());
+        GetActiveQuestManager().LoadQuest(SaveManager.GetInstance().LoadQuest());
     }
 
     public void ProgressActiveQuest()

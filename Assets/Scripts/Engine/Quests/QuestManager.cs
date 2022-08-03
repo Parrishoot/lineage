@@ -90,10 +90,14 @@ public class QuestManager
         questNodeIndex = Math.Min(questNodeIndex + 1, questMetaData.questNodes.Length - 1);
     }
 
-    public void LoadQuestFromSave(QuestSaveData questSaveData)
+    public void LoadQuest(QuestSaveData questSaveData)
     {
         questNodeIndex = questSaveData.questNodeIndex;
         questState = questSaveData.questState;
+    }
+
+    public QuestSaveData GetSaveData() {
+        return new QuestSaveData(this);
     }
 
 }
