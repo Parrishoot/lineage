@@ -137,5 +137,5 @@ MonoBehaviour:
   yOffset: 0
   xBuffer: 0
   yBuffer: 0
-  smoothFollow: 0
+  smoothFollow: 1
   cameraAnchor: {fileID: 0}

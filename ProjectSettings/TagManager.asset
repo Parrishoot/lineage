@@ -44,6 +44,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Tilemap
+    uniqueID: 154455635
+    locked: 0
   - name: Projectiles
     uniqueID: 2626253837
     locked: 0

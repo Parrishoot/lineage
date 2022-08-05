@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon: {fileID: 11400000, guid: f930911bd2ef8dd4ebf5acf224cf242f, type: 2}
   spriteRenderer: {fileID: 2736373409771274138}
-  projectilePrefab: {fileID: 6563042800136436901, guid: 91526cf457c69594fb2b4c100dbdec99, type: 3}
+  projectilePrefab: {fileID: 6563042800136436901, guid: a731a694fd112bd41b3e6ae1374cd822, type: 3}
 --- !u!1 &5659619625364275626
 GameObject:
   m_ObjectHideFlags: 0
@@ -100,7 +100,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 83aea39f7badc644fa03761c5a31a1bf, type: 2}
+  - {fileID: 2100000, guid: 3663755fcabcff8458d3459e45f6ccd5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -119,7 +119,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 179618599
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.39607844}
