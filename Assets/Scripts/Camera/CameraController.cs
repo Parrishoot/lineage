@@ -101,6 +101,12 @@ public class CameraController : Singleton<CameraController>
 
     }
 
+    public void SetHardPosition(Vector3 newPosition)
+    {
+        this.transform.position = newPosition;
+        this.cameraAnchor.transform.position = newPosition;
+    }
+
     public static Vector2 GetVectorToMouse(Vector2 objectPosition)
     {
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
