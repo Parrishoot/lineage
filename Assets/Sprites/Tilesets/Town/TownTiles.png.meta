@@ -1228,6 +1228,279 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: TownTiles_53
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 128
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6376719cac7074c4bac95d6b4a6c0323
+      internalID: -462104537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TownTiles_54
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 128
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e599e24719d7cfc41856ae32a1ac7989
+      internalID: -139002248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TownTiles_55
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 729c9c20a9b39e044a969cb42c2cad86
+      internalID: 1557380855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TownTiles_56
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4962f086b499558428d006eac5bd9f22
+      internalID: -2063293103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TownTiles_57
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15362de5a7e90a44a9874e9957263a87
+      internalID: -186164264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TownTiles_58
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6426f1099b1eb804bb7b49fdd28c5529
+      internalID: -1099397347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TownTiles_59
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3865bf254dab6b84188418083804dab6
+      internalID: -788840227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TownTiles_60
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c3275ac86a340444bc29d38f483ee39
+      internalID: 1244464963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TownTiles_61
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdc1ac56eeeebe64390ea7dfbc52dae9
+      internalID: 955825481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TownTiles_62
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2796559db492e544996e4ec54e5827cc
+      internalID: -1891673504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TownTiles_63
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ece3a2147c304d14186c2b16f8d8bbac
+      internalID: -1944921789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TownTiles_64
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63d475724a83acc418f7d513ed517c6c
+      internalID: -1774969879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TownTiles_65
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fcea225f305fa1b489c262cefd1afdd3
+      internalID: 314763367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -1242,6 +1515,7 @@ TextureImporter:
       TownTiles_37: -928623210
       TownTiles_51: 176491459
       TownTiles_31: 480702560
+      TownTiles_63: -1944921789
       TownTiles_22: -1952958729
       TownTiles_46: -248571577
       TownTiles_36: -372024082
@@ -1258,23 +1532,29 @@ TextureImporter:
       TownTiles_43: 1305707906
       TownTiles_12: 9854330
       TownTiles_15: -254904069
+      TownTiles_56: -2063293103
       TownTiles_25: 1957462312
       TownTiles_9: 1025809095
       TownTiles_19: -211029243
+      TownTiles_59: -788840227
+      TownTiles_61: 955825481
+      TownTiles_64: -1774969879
       TownTiles_48: -1480266598
       TownTiles_0: 1091268895
-      TownTiles_27: -1050604230
-      TownTiles_35: 1945261634
       TownTiles_42: 1485110956
+      TownTiles_35: 1945261634
+      TownTiles_27: -1050604230
+      TownTiles_54: -139002248
       TownTiles_17: -2111106353
       TownTiles_20: 1865084926
       TownTiles_21: 832836734
       TownTiles_33: 1144745862
+      TownTiles_60: 1244464963
       TownTiles_41: 752711461
       TownTiles_3: -1460639926
       TownTiles_8: 1608507156
-      TownTiles_44: 1684341339
       TownTiles_50: 1395681574
+      TownTiles_44: 1684341339
       TownTiles_29: 1446824009
       TownTiles_6: -1859021329
       TownTiles_4: -1467282201
@@ -1282,16 +1562,22 @@ TextureImporter:
       TownTiles_23: -1741943650
       TownTiles_18: -1272991038
       TownTiles_52: -588971384
+      TownTiles_53: -462104537
+      TownTiles_58: -1099397347
       TownTiles_5: 431538527
       TownTiles_26: 1622307422
+      TownTiles_62: -1891673504
       TownTiles_32: -299373901
+      TownTiles_57: -186164264
       TownTiles_39: 1977060988
       TownTiles_24: 1524409389
       TownTiles_14: -1785634527
       TownTiles_45: -722620910
       TownTiles_10: -849771456
+      TownTiles_65: 314763367
       TownTiles_40: -872326077
       TownTiles_49: 2084438650
+      TownTiles_55: 1557380855
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
