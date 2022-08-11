@@ -1,11 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class CameraController : Singleton<CameraController>
 {
-    public float defaultZoom = 5;
-
     public float followSpeed = .005f;
 
     public float xOffset = 0f;
@@ -26,9 +25,11 @@ public class CameraController : Singleton<CameraController>
     private float totalTransitionTime;
     private float startingZoom;
 
+    private float defaultZoom;
+
     public void Start()
     {
-        Camera.main.orthographicSize = defaultZoom;
+        defaultZoom = Camera.main.orthographicSize;
         targetZoom = defaultZoom;
     }
 
@@ -73,12 +74,11 @@ public class CameraController : Singleton<CameraController>
         }
 
         // Set the zoom if it is not equal to the target
-        if(Camera.main.orthographicSize != targetZoom)
+        if (Camera.main.orthographicSize != targetZoom)
         {
             currentTransitionTime += Time.deltaTime / totalTransitionTime;
             Camera.main.orthographicSize = Mathf.Lerp(startingZoom, targetZoom, Mathf.SmoothStep(0f, 1f, currentTransitionTime));
         }
-
     }
 
     // Function to be called by the follow object (typically Local player)
@@ -132,6 +132,7 @@ public class CameraController : Singleton<CameraController>
         totalTransitionTime = zoomSpeed;
         targetZoom = newTargetZoom;
         startingZoom = Camera.main.orthographicSize;
+        // GetComponent<UnityEngine.Experimental.Rendering.Universal.PixelPerfectCamera>().enabled = false;
     }
 
     public void AttachCameraAnchor(GameObject gameObject, bool shouldSmoothFollow = true)

@@ -30,6 +30,8 @@ public class NPCController : Interactable
     public override void Interact()
     {
         interactionState = Interactable.INTERACTION_STATE.IN_PROGRESS;
-        DialogueManager.GetInstance().SetDialogue(randomDialogueOptions[0], voice);
+
+        // TODO: ADD LOGIC TO CHOOSE LINE
+        DialogueManager.GetInstance().SetDialogue(randomDialogueOptions[Random.Range(0, randomDialogueOptions.Count)], voice);
     }
 }

@@ -781,7 +781,7 @@ GameObject:
   - component: {fileID: 2672977871295777032}
   - component: {fileID: 3463655735710970559}
   m_Layer: 0
-  m_Name: Town Tilemap
+  m_Name: Town Tilemap (Deprecated)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
