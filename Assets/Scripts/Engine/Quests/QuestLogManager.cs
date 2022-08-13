@@ -8,7 +8,9 @@ public class QuestLogManager : Singleton<QuestLogManager>
 
     public int activeQuestIndex = 0;
 
-    public QuestTextController questTextController;
+    public GameObject questManagerPrefab;
+
+    public QuestLogUIController questLogUIController;
 
     private List<QuestManager> questManagers = new List<QuestManager>();
     private QuestManager activeQuest;
@@ -17,16 +19,41 @@ public class QuestLogManager : Singleton<QuestLogManager>
     {
         foreach(QuestMetadata questMetaData in questList)
         {
-            questManagers.Add(new QuestManager(questMetaData));
+            QuestManager questManager = GameObject.Instantiate(questManagerPrefab, this.transform).GetComponent<QuestManager>();
+
+            questManager.Init(questMetaData);
+            questManagers.Add(questManager);
+
+            questLogUIController.AddQuestUIElement(questManager.GetQuestUIElement());
+
+            questManager.Deactivate();
         }
 
         // TODO: UPDATE THIS
-        activeQuest = questManagers[activeQuestIndex];
+        ActivateQuest(activeQuestIndex);
+    }
+
+    public void ActivateQuest(int questIndex)
+    {
+        if(activeQuest != null)
+        {
+            activeQuest.Deactivate();
+        }
+
+        activeQuest = questManagers[questIndex];
+        activeQuest.Activate();
     }
 
     public void Update()
     {
-        questTextController.SetText(activeQuest.GetQuestHeaderString(), activeQuest.GetQuestNodeHeaderString());
+        if(Input.GetKeyDown(KeyCode.O))
+        {
+            ActivateQuest(0);
+        }
+        if(Input.GetKeyDown(KeyCode.P))
+        {
+            ActivateQuest(1);
+        }
     }
 
     public QuestManager GetQuestManager(int index)

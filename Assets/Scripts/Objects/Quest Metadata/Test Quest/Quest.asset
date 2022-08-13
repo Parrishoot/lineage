@@ -73,7 +73,7 @@ MonoBehaviour:
   - {fileID: 7532131059544490365}
   - {fileID: 3350385919891798931}
   - {fileID: -8176020379087723482}
-  questName: Meghan's Qyest
+  questName: Garfield's Revenge
   questDescription: This is a test of the quests
   accessibleBranches: 
 --- !u!114 &3350385919891798931

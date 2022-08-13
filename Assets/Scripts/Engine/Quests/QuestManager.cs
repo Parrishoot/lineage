@@ -1,10 +1,19 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
-public class QuestManager
+public class QuestManager: MonoBehaviour
 {
 
+    public GameObject questUIPrefab;
+    public GameObject questNodeUIPrefab;
+
     private QuestMetadata questMetaData;
+
+    private QuestUIController questUIController;
+
+    // TODO: Use this somehow
+    private bool active = false;
 
     public enum QUEST_STATES
     {
@@ -22,26 +31,57 @@ public class QuestManager
 
     private List<QuestNodeManager> questNodeManagers;
 
-    public QuestManager(QuestMetadata questMetaData)
+    public void Init(QuestMetadata questMetaData)
     {
         this.questMetaData = questMetaData;
         questNodeManagers = new List<QuestNodeManager>();
+        questUIController = GameObject.Instantiate(questUIPrefab, this.transform).GetComponent<QuestUIController>();
+        questUIController.SetHeaderText(questMetaData.questName);
         LoadQuest();
+
+        Deactivate();
     }
 
     public void LoadQuest()
     {
         foreach(QuestNodeMetadata questNodeMetaData in questMetaData.questNodes) {
-            switch(questNodeMetaData.questNodeType)
-            {
-                case QuestNodeMetadata.QUEST_NODE_TYPE.CONVERSATION:
-                    questNodeManagers.Add(new ConversationQuestNodeManager((ConversationQuestNodeMetadata) questNodeMetaData));
-                    break;
+            AddQuestNode(questNodeMetaData);
+        }
+    }
 
-                case QuestNodeMetadata.QUEST_NODE_TYPE.ITEM:
-                    questNodeManagers.Add(new ItemQuestNodeManager((ItemQuestNodeMetadata) questNodeMetaData));
-                    break;
-            }
+    public void Activate()
+    {
+        active = true;
+        questUIController.Activate();
+    }
+
+    public void Deactivate()
+    {
+        active = false;
+        questUIController.Deactivate();
+    }
+
+    public GameObject GetQuestUIElement()
+    {
+        return questUIController.gameObject;
+    }
+
+    private void AddQuestNode(QuestNodeMetadata questNodeMetadata)
+    {
+        GameObject questNodeUIElement = GameObject.Instantiate(questNodeUIPrefab, this.transform);
+        questUIController.AddQuestNode(questNodeUIElement);
+
+        QuestNodeUIController questNodeUIController = questNodeUIElement.GetComponent<QuestNodeUIController>();
+
+        switch (questNodeMetadata.questNodeType)
+        {
+            case QuestNodeMetadata.QUEST_NODE_TYPE.CONVERSATION:
+                questNodeManagers.Add(new ConversationQuestNodeManager((ConversationQuestNodeMetadata) questNodeMetadata, questNodeUIController));
+                break;
+
+            case QuestNodeMetadata.QUEST_NODE_TYPE.ITEM:
+                questNodeManagers.Add(new ItemQuestNodeManager((ItemQuestNodeMetadata)questNodeMetadata, questNodeUIController));
+                break;
         }
     }
 
