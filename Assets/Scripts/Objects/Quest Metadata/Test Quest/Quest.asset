@@ -55,7 +55,9 @@ MonoBehaviour:
   m_Name: ConversationQuestNodeMetadata
   m_EditorClassIdentifier: 
   questNodeType: 0
-  npcName: Garfield
+  npcType: 0
+  dialogue:
+    dialoguePassages: []
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89,7 +91,9 @@ MonoBehaviour:
   m_Name: ConversationQuestNodeMetadata
   m_EditorClassIdentifier: 
   questNodeType: 0
-  npcName: Odie
+  npcType: 0
+  dialogue:
+    dialoguePassages: []
 --- !u!114 &7532131059544490365
 MonoBehaviour:
   m_ObjectHideFlags: 0

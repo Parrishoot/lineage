@@ -195,7 +195,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3925935528839573397
 CanvasRenderer:
@@ -274,3 +274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questNodeText: {fileID: 5031191171363832261}
+  inProgressBackgroundColor: {r: 0.9764706, g: 0.7607843, b: 0.16862746, a: 1}
+  inProgressTextColor: {r: 1, g: 1, b: 1, a: 1}
+  completeBackgroundColor: {r: 0.4117647, g: 0.30980393, b: 0.38431373, a: 1}
+  completeTextColor: {r: 0.49803922, g: 0.4392157, b: 0.5411765, a: 1}

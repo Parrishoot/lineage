@@ -27,10 +27,10 @@ MonoBehaviour:
   m_Name: ScoobertQuest
   m_EditorClassIdentifier: 
   questNodes:
-  - {fileID: 7790473459138669835}
-  - {fileID: -4539986187046035507}
+  - {fileID: 2780757886434658665}
   - {fileID: 1976258528855126154}
-  questName: Scooby Doo!
+  - {fileID: -4539986187046035507}
+  questName: Garfields Revenge
   questDescription: Don't you mean Melvin Doo?
   accessibleBranches: 
 --- !u!114 &1976258528855126154
@@ -46,8 +46,9 @@ MonoBehaviour:
   m_Name: ConversationQuestNodeMetadata
   m_EditorClassIdentifier: 
   questNodeType: 0
-  npcName: Scoobert Doobert
---- !u!114 &7790473459138669835
+  npcType: 2
+  dialogue: {fileID: 11400000, guid: d1ae31d5bc5a6c241951d8228511c31c, type: 2}
+--- !u!114 &2780757886434658665
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -60,4 +61,5 @@ MonoBehaviour:
   m_Name: ConversationQuestNodeMetadata
   m_EditorClassIdentifier: 
   questNodeType: 0
-  npcName: Melvin
+  npcType: 1
+  dialogue: {fileID: 11400000, guid: c58490bd302f1e547bc4739c9210d369, type: 2}

@@ -7,19 +7,25 @@ public class ConversationQuestNodeManager : QuestNodeManager
 
     private ConversationQuestNodeMetadata metadata;
 
+    private NPCController npcController;
+
     public ConversationQuestNodeManager(ConversationQuestNodeMetadata metadata, QuestNodeUIController questNodeUIController)
     {
         this.metadata = metadata;
         SetQuestNodeUIController(questNodeUIController);
     }
 
-    public override bool IsFinished()
+    public override void Activate()
     {
-        throw new System.NotImplementedException();
+        npcController = NPCMasterManager.GetInstance().GetNPCController(metadata.npcType);
+
+        npcController.AddQuestDialogue(metadata.dialogue, this);
+
+        base.Activate();
     }
 
     public override string ToString()
     {
-        return "Talk to " + metadata.npcName;
+        return "Talk to " + metadata.npcType.ToString();
     }
 }

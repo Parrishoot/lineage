@@ -13,11 +13,6 @@ public class ItemQuestNodeManager : QuestNodeManager
         SetQuestNodeUIController(questNodeUIController);
     }
 
-    public override bool IsFinished()
-    {
-        throw new System.NotImplementedException();
-    }
-
     public override string ToString()
     {
         return "Find the " + metadata.itemName;

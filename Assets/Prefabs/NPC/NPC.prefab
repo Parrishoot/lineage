@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 2140890911173588184}
   - component: {fileID: 2140890911173588187}
   - component: {fileID: 2140890911173588182}
-  - component: {fileID: 2140890911173588185}
   - component: {fileID: 8638016316597482219}
   - component: {fileID: 4537566821968283560}
+  - component: {fileID: 1203006642064386928}
   m_Layer: 0
   m_Name: NPC
   m_TagString: Untagged
@@ -74,8 +74,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1417078393
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: eea634c6cb5896b4d8b2f94c8592b36b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -104,22 +104,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.5
---- !u!114 &2140890911173588185
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2140890911173588186}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11ba63054db7b544fa5c9e4fd59a4995, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  voice: {fileID: 8300000, guid: 2c5beaca37f2c544dbdf1d9d7bcf8da8, type: 3}
-  randomDialogueOptions:
-  - dialoguePassages: []
-  - dialoguePassages: []
 --- !u!82 &8638016316597482219
 AudioSource:
   m_ObjectHideFlags: 0
@@ -228,3 +212,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbef8dea0cbbd004bbe791f1dbe9065d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1203006642064386928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2140890911173588186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11ba63054db7b544fa5c9e4fd59a4995, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  voice: {fileID: 8300000, guid: 2c5beaca37f2c544dbdf1d9d7bcf8da8, type: 3}
+  npcType: 0
+  dialogueOptions: []

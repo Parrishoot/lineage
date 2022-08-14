@@ -10,14 +10,28 @@ public class Dialogue
     // And auto-wrap statements
     // I'd also love this to be a LinkedList but its not serializable and
     // I'm too lazy to make another custom editor right now
-    public List<DialogueNode> dialoguePassages;
+    public List<DialogueNode> dialoguePassages = new List<DialogueNode>();
 
     private int currentIndex = 0;
 
-    public string BeginDialogue()
+    public Dialogue(DialogueMetadata metadata)
+    {
+        foreach(DialogueMetadata.DialogueNodeMetadata passage in metadata.dialoguePassages)
+        {
+            dialoguePassages.Add(new DialogueNode(passage.text,
+                                                  passage.charactersPerSecond));
+        }
+    }
+
+    public virtual string BeginDialogue()
     {
         currentIndex = 0;
         return dialoguePassages[currentIndex].dialogue;
+    }
+    
+    public virtual void EndDialogue()
+    {
+        // Right now this does nothing, may do something in the future
     }
 
     // Returns the next text in the dialogue passages

@@ -97,6 +97,8 @@ public class DialogueManager : Singleton<DialogueManager>
                 string nextString = currentDialogue.GetNextText(true);
                 if(nextString == null)
                 {
+                    currentDialogue.EndDialogue();
+
                     dialogueTextController.SetGUIEnabled(false);
                     currentDialogue = null;
                     dialogueState = DIALOGUE_STATE.INACTIVE;

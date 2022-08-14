@@ -37,12 +37,21 @@ public class QuestManager: MonoBehaviour
         questNodeManagers = new List<QuestNodeManager>();
         questUIController = GameObject.Instantiate(questUIPrefab, this.transform).GetComponent<QuestUIController>();
         questUIController.SetHeaderText(questMetaData.questName);
-        LoadQuest();
+        InitQuest();
 
         Deactivate();
     }
 
-    public void LoadQuest()
+    public void Update()
+    {
+        // TODO: Maybe update this and call it somewhere else
+        if(GetActiveQuestNodeManager().IsFinished())
+        {
+            Progress();
+        }
+    }
+
+    public void InitQuest()
     {
         foreach(QuestNodeMetadata questNodeMetaData in questMetaData.questNodes) {
             AddQuestNode(questNodeMetaData);
@@ -53,6 +62,7 @@ public class QuestManager: MonoBehaviour
     {
         active = true;
         questUIController.Activate();
+        GetActiveQuestNodeManager().Activate();
     }
 
     public void Deactivate()
@@ -127,7 +137,21 @@ public class QuestManager: MonoBehaviour
 
     public void Progress()
     {
-        questNodeIndex = Math.Min(questNodeIndex + 1, questMetaData.questNodes.Length - 1);
+        questNodeIndex++;
+
+        if(questNodeIndex == questNodeManagers.Count)
+        {
+            Debug.Log("Congrats on completing the quest!");
+        }
+        else
+        {
+            GetActiveQuestNodeManager().Activate();
+        }
+    }
+
+    public QuestNodeManager GetActiveQuestNodeManager()
+    {
+        return questNodeManagers[questNodeIndex];
     }
 
     public void LoadQuest(QuestSaveData questSaveData)

@@ -48,11 +48,7 @@ public class QuestLogManager : Singleton<QuestLogManager>
     {
         if(Input.GetKeyDown(KeyCode.O))
         {
-            ActivateQuest(0);
-        }
-        if(Input.GetKeyDown(KeyCode.P))
-        {
-            ActivateQuest(1);
+            GetActiveQuestManager().Progress();
         }
     }
 
