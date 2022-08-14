@@ -65,4 +65,6 @@ public abstract class QuestNodeManager
     }
 
     public abstract override string ToString();
+
+    public abstract void InitQuestOnSceneTransition();
 }

@@ -13,6 +13,11 @@ public class ItemQuestNodeManager : QuestNodeManager
         SetQuestNodeUIController(questNodeUIController);
     }
 
+    public override void InitQuestOnSceneTransition()
+    {
+        // TODO: Implement this
+    }
+
     public override string ToString()
     {
         return "Find the " + metadata.itemName;

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class QuestLogManager : Singleton<QuestLogManager>
 {
@@ -15,7 +16,7 @@ public class QuestLogManager : Singleton<QuestLogManager>
     private List<QuestManager> questManagers = new List<QuestManager>();
     private QuestManager activeQuest;
 
-    private void Start()
+    void Start()
     {
         foreach(QuestMetadata questMetaData in questList)
         {
@@ -33,6 +34,11 @@ public class QuestLogManager : Singleton<QuestLogManager>
         ActivateQuest(activeQuestIndex);
     }
 
+    public void InitActiveQuestOnSceneTransition()
+    {
+        GetActiveQuestManager().InitQuestOnSceneTransition();
+    }
+
     public void ActivateQuest(int questIndex)
     {
         if(activeQuest != null)
@@ -42,14 +48,6 @@ public class QuestLogManager : Singleton<QuestLogManager>
 
         activeQuest = questManagers[questIndex];
         activeQuest.Activate();
-    }
-
-    public void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.O))
-        {
-            GetActiveQuestManager().Progress();
-        }
     }
 
     public QuestManager GetQuestManager(int index)

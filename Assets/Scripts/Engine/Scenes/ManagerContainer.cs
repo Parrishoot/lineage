@@ -10,7 +10,6 @@ public class ManagerContainer : MonoBehaviour
     {
         if (GameObject.Find("ManagerContainer") == null)
         {
-            Debug.Log("Got here!");
             GameObject main = GameObject.Instantiate(Resources.Load("Prefabs/Managers/ManagerContainer")) as GameObject;
             main.name = "ManagerContainer";
         }

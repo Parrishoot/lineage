@@ -9,7 +9,7 @@ public class TransitionManager: Singleton<TransitionManager>
 
     public float transitionTime;
 
-    private int currentSpawnIndex = -1;
+    private int currentSpawnIndex = 0;
     
     private enum TRANSITION_STATES
     {
@@ -23,12 +23,24 @@ public class TransitionManager: Singleton<TransitionManager>
         StartCoroutine(LoadNextLevel(sceneName, spawnIndex));
     }
 
+    private void Start()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         Vector3 spawnPosition = SpawnPoints.GetInstance().spawnPoints[currentSpawnIndex].position;
 
+        // Get the player and Spawn them at the right location
         GameObject.FindGameObjectWithTag("Player").transform.position = spawnPosition;
         CameraController.GetInstance().SetHardPosition(spawnPosition);
+
+        // Set the NPC Controllers of the NPC's that exist in the scene
+        NPCMasterManager.GetInstance().ResetControllers();
+
+        // Set up the scene with the ongoing quests
+        QuestLogManager.GetInstance().InitActiveQuestOnSceneTransition();
     }
 
     IEnumerator LoadNextLevel(string sceneName, int spawnIndex)
@@ -40,7 +52,6 @@ public class TransitionManager: Singleton<TransitionManager>
         currentSpawnIndex = spawnIndex;
 
         SceneManager.LoadScene(sceneName);
-        SceneManager.sceneLoaded += OnSceneLoaded;
 
         animator.SetInteger("transitionState", (int)TRANSITION_STATES.FADE_IN);
 

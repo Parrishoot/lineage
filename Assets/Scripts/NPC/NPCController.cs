@@ -20,18 +20,17 @@ public class NPCController : Interactable
     {
         base.Start();
 
-        // If the NPC isn't a nobody, add it to the
-        if(npcType != NPCMasterManager.NPCType.NOBODY)
-        {
-            NPCMasterManager.GetInstance().AddNPCController(npcType, this);
-        }
-
         foreach(DialogueMetadata metadata in dialogueOptions)
         {
             randomDialogueOptions.Add(new Dialogue(metadata));
         }
 
         dialogueManager = DialogueManager.GetInstance();
+    }
+
+    public NPCMasterManager.NPCType GetNPCType()
+    {
+        return npcType;
     }
 
     public void Update()

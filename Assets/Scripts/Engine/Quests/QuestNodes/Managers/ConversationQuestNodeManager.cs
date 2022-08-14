@@ -15,11 +15,19 @@ public class ConversationQuestNodeManager : QuestNodeManager
         SetQuestNodeUIController(questNodeUIController);
     }
 
-    public override void Activate()
+    public void AddQuestDialogue()
     {
         npcController = NPCMasterManager.GetInstance().GetNPCController(metadata.npcType);
 
-        npcController.AddQuestDialogue(metadata.dialogue, this);
+        if(npcController != null)
+        {
+            npcController.AddQuestDialogue(metadata.dialogue, this);
+        }
+    }
+
+    public override void Activate()
+    {
+        AddQuestDialogue();
 
         base.Activate();
     }
@@ -27,5 +35,10 @@ public class ConversationQuestNodeManager : QuestNodeManager
     public override string ToString()
     {
         return "Talk to " + metadata.npcType.ToString();
+    }
+
+    public override void InitQuestOnSceneTransition()
+    {
+        AddQuestDialogue();
     }
 }

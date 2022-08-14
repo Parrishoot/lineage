@@ -95,6 +95,11 @@ public class QuestManager: MonoBehaviour
         }
     }
 
+    public void InitQuestOnSceneTransition()
+    {
+        GetActiveQuestNodeManager().InitQuestOnSceneTransition();
+    }
+
     public QUEST_STATES GetQuestState()
     {
         return questState;

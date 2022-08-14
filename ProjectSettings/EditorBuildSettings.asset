@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/NewScene.unity
     guid: 172d876662c99344bba5752c5faa917a
+  - enabled: 1
+    path: Assets/Scenes/OdieScene.unity
+    guid: f70c131c345609449867c309b208fd09
   m_configObjects: {}
