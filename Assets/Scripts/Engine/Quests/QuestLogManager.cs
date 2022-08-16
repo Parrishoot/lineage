@@ -47,7 +47,7 @@ public class QuestLogManager : Singleton<QuestLogManager>
         }
 
         activeQuest = questManagers[questIndex];
-        activeQuest.Activate();
+        activeQuest.SetActive();
     }
 
     public QuestManager GetQuestManager(int index)

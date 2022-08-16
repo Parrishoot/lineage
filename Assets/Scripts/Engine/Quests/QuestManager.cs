@@ -15,7 +15,7 @@ public class QuestManager: MonoBehaviour
     // TODO: Use this somehow
     private bool active = false;
 
-    public enum QUEST_STATES
+    public enum QUEST_STATE
     {
         UNDISCOVERED,
         ACTIVE,
@@ -24,7 +24,7 @@ public class QuestManager: MonoBehaviour
         UNREACHABLE
     }
 
-    private QUEST_STATES questState = QUEST_STATES.UNDISCOVERED;
+    private QUEST_STATE questState = QUEST_STATE.UNDISCOVERED;
 
     // Current quest node index
     int questNodeIndex = 0;
@@ -58,14 +58,14 @@ public class QuestManager: MonoBehaviour
         }
     }
 
-    public void Activate()
+    public void SetActive()
     {
         active = true;
         questUIController.Activate();
         GetActiveQuestNodeManager().Activate();
     }
 
-    public void Activate(int currentQuestNodeIndex, QUEST_STATES currenQuestState)
+    public void Activate(int currentQuestNodeIndex, QUEST_STATE currenQuestState)
     {
         for (int i = 0; i < currentQuestNodeIndex; i++)
         {
@@ -76,7 +76,7 @@ public class QuestManager: MonoBehaviour
 
         questState = currenQuestState;
 
-        Activate();
+        SetActive();
     }
 
     public void Deactivate()
@@ -114,7 +114,7 @@ public class QuestManager: MonoBehaviour
         GetActiveQuestNodeManager().InitQuestOnSceneTransition();
     }
 
-    public QUEST_STATES GetQuestState()
+    public QUEST_STATE GetQuestState()
     {
         return questState;
     }

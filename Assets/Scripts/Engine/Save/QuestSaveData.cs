@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class QuestSaveData
 {
-    public QuestManager.QUEST_STATES questState;
+    public QuestManager.QUEST_STATE questState;
     public int questNodeIndex;
 
     public QuestSaveData(QuestManager questManager)
