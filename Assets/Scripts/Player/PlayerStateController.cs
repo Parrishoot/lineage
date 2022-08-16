@@ -13,6 +13,8 @@ public class PlayerStateController : Mover
         INTERACTING
     }
 
+    public const string PLAYER_TAG = "Player";
+
     // DASH variables
     public float dashRampUpPercent = .1f;
     public float dashRampDownPercent = .1f;
@@ -43,6 +45,8 @@ public class PlayerStateController : Mover
     {
         inputManager = InputManager.GetInstance();
         CameraController.GetInstance().AttachCameraAnchor(gameObject);
+
+        tag = PLAYER_TAG;
     }
 
     private float lastDirection = 0;

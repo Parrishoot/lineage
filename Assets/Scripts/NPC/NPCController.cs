@@ -50,6 +50,16 @@ public class NPCController : Interactable
     {
         interactionState = Interactable.INTERACTION_STATE.IN_PROGRESS;
 
+        // Look at the player as they're talking to you
+
+        Vector3 newScale = new Vector3(Mathf.Sign(GameObject.FindGameObjectWithTag(PlayerStateController.PLAYER_TAG).gameObject.transform.position.x - transform.position.x),
+                                       transform.localScale.y,
+                                       transform.localScale.z);
+
+        Debug.Log(newScale);
+
+        transform.localScale = newScale;
+
         if(questDialogue.Count > 0)
         {
             dialogueManager.SetDialogue(questDialogue.Dequeue(), voice);

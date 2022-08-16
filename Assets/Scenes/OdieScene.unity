@@ -22052,6 +22052,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 426315958486935709, guid: d48f828c35b77c043be0e98a99b545c7, type: 3}
+      propertyPath: npcType
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 643624150010853173, guid: d48f828c35b77c043be0e98a99b545c7, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -22098,7 +22102,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 643624150010853175, guid: d48f828c35b77c043be0e98a99b545c7, type: 3}
       propertyPath: m_Name
-      value: Odie
+      value: Brad
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d48f828c35b77c043be0e98a99b545c7, type: 3}

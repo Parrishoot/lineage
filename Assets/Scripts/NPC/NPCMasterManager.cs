@@ -7,9 +7,13 @@ public class NPCMasterManager : Singleton<NPCMasterManager>
     public enum NPCType
     {
         NOBODY,
+
         GARFIELD,
         ODIE,
-        JOHN
+        JOHN,
+
+        TREVOR,
+        BRAD
     }
 
     public Dictionary<NPCType, NPCController> npcControllers = new Dictionary<NPCType, NPCController>();

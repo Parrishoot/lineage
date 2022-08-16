@@ -30,7 +30,7 @@ MonoBehaviour:
   - {fileID: 2780757886434658665}
   - {fileID: 1976258528855126154}
   - {fileID: -4539986187046035507}
-  questName: Garfields Revenge
+  questName: Revenge of the Boys
   questDescription: Don't you mean Melvin Doo?
   accessibleBranches: 
 --- !u!114 &1976258528855126154
@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: ConversationQuestNodeMetadata
   m_EditorClassIdentifier: 
   questNodeType: 0
-  npcType: 2
+  npcType: 5
   dialogue: {fileID: 11400000, guid: d1ae31d5bc5a6c241951d8228511c31c, type: 2}
 --- !u!114 &2780757886434658665
 MonoBehaviour:
@@ -61,5 +61,5 @@ MonoBehaviour:
   m_Name: ConversationQuestNodeMetadata
   m_EditorClassIdentifier: 
   questNodeType: 0
-  npcType: 1
+  npcType: 4
   dialogue: {fileID: 11400000, guid: c58490bd302f1e547bc4739c9210d369, type: 2}

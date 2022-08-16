@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialoguePassages:
   - charactersPerSecond: 20
-    text: Something about Odie! Who is me!
+    text: I am Brad! Achoo!

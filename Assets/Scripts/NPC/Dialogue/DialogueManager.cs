@@ -69,12 +69,23 @@ public class DialogueManager : Singleton<DialogueManager>
 
             if(currentTickerTime >= currentDialogue.GetCurrentTickerTime())
             {
-                if(!audioSouce.isPlaying)
+                
+
+                char nextCharacter = currentDialogue.GetCurrentText()[currentDialogueCharacterIndex++];
+
+                while(nextCharacter.Equals(' '))
+                {
+                    currentDialogueString += nextCharacter;
+                    nextCharacter = currentDialogue.GetCurrentText()[currentDialogueCharacterIndex++];
+                }
+
+                if (!audioSouce.isPlaying)
                 {
                     audioSouce.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
                     audioSouce.Play();
                 }
-                currentDialogueString += currentDialogue.GetCurrentText()[currentDialogueCharacterIndex++];
+
+                currentDialogueString += nextCharacter;
                 currentTickerTime = 0f;
 
                 if(currentDialogue.GetCurrentText().Equals(currentDialogueString.ToString()))

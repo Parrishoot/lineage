@@ -23731,6 +23731,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8460316267646577892, guid: 70719b2ea876b464e82c8bdfb970d67a, type: 3}
+      propertyPath: npcType
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8677622877723013964, guid: 70719b2ea876b464e82c8bdfb970d67a, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -23781,7 +23785,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8677622877723013966, guid: 70719b2ea876b464e82c8bdfb970d67a, type: 3}
       propertyPath: m_Name
-      value: Garfield
+      value: Trevor
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70719b2ea876b464e82c8bdfb970d67a, type: 3}

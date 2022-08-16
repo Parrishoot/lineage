@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: FuckYou
   m_EditorClassIdentifier: 
   dialoguePassages:
-  - charactersPerSecond: 10
-    text: Fuck you! I'm Odie!
+  - charactersPerSecond: 20
+    text: Michael?
+  - charactersPerSecond: 5
+    text: ...I would die for him.

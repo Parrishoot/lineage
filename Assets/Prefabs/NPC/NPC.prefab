@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8638016316597482219}
   - component: {fileID: 4537566821968283560}
   - component: {fileID: 1203006642064386928}
+  - component: {fileID: 2352592696800992950}
   m_Layer: 0
   m_Name: NPC
   m_TagString: Untagged
@@ -227,3 +228,19 @@ MonoBehaviour:
   voice: {fileID: 8300000, guid: 2c5beaca37f2c544dbdf1d9d7bcf8da8, type: 3}
   npcType: 0
   dialogueOptions: []
+--- !u!70 &2352592696800992950
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2140890911173588186}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.54, y: 0.83}
+  m_Direction: 0
