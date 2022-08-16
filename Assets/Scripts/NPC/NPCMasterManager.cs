@@ -33,7 +33,7 @@ public class NPCMasterManager : Singleton<NPCMasterManager>
             if(controller.GetNPCType() != NPCType.NOBODY)
             {
                 AddNPCController(controller.GetNPCType(),
-                 controller);
+                                 controller);
             }
         }
     }

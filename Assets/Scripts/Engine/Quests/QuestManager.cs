@@ -65,6 +65,20 @@ public class QuestManager: MonoBehaviour
         GetActiveQuestNodeManager().Activate();
     }
 
+    public void Activate(int currentQuestNodeIndex, QUEST_STATES currenQuestState)
+    {
+        for (int i = 0; i < currentQuestNodeIndex; i++)
+        {
+            questNodeManagers[i].Complete();
+        }
+
+        questNodeIndex = currentQuestNodeIndex;
+
+        questState = currenQuestState;
+
+        Activate();
+    }
+
     public void Deactivate()
     {
         active = false;
@@ -161,8 +175,8 @@ public class QuestManager: MonoBehaviour
 
     public void LoadQuest(QuestSaveData questSaveData)
     {
-        questNodeIndex = questSaveData.questNodeIndex;
-        questState = questSaveData.questState;
+        Activate(questSaveData.questNodeIndex,
+                 questSaveData.questState);
     }
 
     public QuestSaveData GetSaveData() {

@@ -35,7 +35,10 @@ public class DialogueManager : Singleton<DialogueManager>
     {
         dialogue.BeginDialogue();
         currentDialogue = dialogue;
+
+        dialogueTextController.SetText("");
         dialogueTextController.SetGUIEnabled(true);
+
         dialogueState = DIALOGUE_STATE.ACTIVE;
 
         audioSouce.clip = voice;

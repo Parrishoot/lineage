@@ -31,7 +31,7 @@ public class QuestLogManager : Singleton<QuestLogManager>
         }
 
         // TODO: UPDATE THIS
-        ActivateQuest(activeQuestIndex);
+        // ActivateQuest(activeQuestIndex);
     }
 
     public void InitActiveQuestOnSceneTransition()
