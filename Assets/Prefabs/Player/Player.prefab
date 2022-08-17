@@ -105,6 +105,7 @@ MonoBehaviour:
   dashSpeedMultiplier: 3
   animator: {fileID: 5414324087380939664}
   sprintParticleSystem: {fileID: 3919093387754426948}
+  flipSpeed: 1200
 --- !u!1 &6111408288189142074
 GameObject:
   m_ObjectHideFlags: 0

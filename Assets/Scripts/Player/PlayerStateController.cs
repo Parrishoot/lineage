@@ -49,7 +49,8 @@ public class PlayerStateController : Mover
         tag = PLAYER_TAG;
     }
 
-    private float lastDirection = 0;
+    private float lastMoveDirection = 0;
+
     private bool dash = false;
 
     public void Update()
@@ -117,8 +118,8 @@ public class PlayerStateController : Mover
                 move(movementVector);
 
                 // Spawn particles if we're changing directions
-                if ((x.Equals(1f) && lastDirection.Equals(-1f)) ||
-                    (x.Equals(-1f) && lastDirection.Equals(1f)))
+                if ((x.Equals(1f) && lastMoveDirection.Equals(-1f)) ||
+                    (x.Equals(-1f) && lastMoveDirection.Equals(1f)))
                 {
                     sprintParticleSystem.Play();
                 }
@@ -178,7 +179,7 @@ public class PlayerStateController : Mover
             // Case for when the player begins interaction with an interactable
             case PLAYER_MOVEMENT_STATES.INTERACTING:
                 
-                if(interactable.InteractionFinished())
+                if(interactable == null || interactable.InteractionFinished())
                 {
                     playerMovementState = PLAYER_MOVEMENT_STATES.IDLE;
                     CameraController.GetInstance().AttachCameraAnchor(gameObject);
@@ -191,9 +192,10 @@ public class PlayerStateController : Mover
         // Update the animator
         // TODO: Update this to take in a separate player animation enum map value
         animator.SetInteger(ANIMATOR_MOVEMENT_PARAMETER_NAME, (int) playerMovementState);
-        lastDirection = x;
+        lastMoveDirection = x;
 
-        transform.localScale = Mathf.Sign(CameraController.GetVectorToMouse(transform.position).x) >= 0 ? new Vector3(1, 1, 1) : new Vector3(-1, 1, 1);
+        float target = 180 - (Mathf.Sign(CameraController.GetVectorToMouse(transform.position).x) + 1) * 90;
+        SetFlip(target, Time.fixedDeltaTime);
     }
 
     private void SetDash(Vector2 newDashDirection)

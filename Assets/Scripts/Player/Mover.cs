@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
 [RequireComponent(typeof(Rigidbody2D))]
 
-public class Mover : MonoBehaviour
+public class Mover : Flipper
 {
 
     // Every mover has a rigidbody and a base movemnt speed
@@ -21,14 +21,14 @@ public class Mover : MonoBehaviour
         frameMovementSpeed = frameMovementSpeed == NO_MOVEMENT_OVERRIDE ? baseMovementSpeed : frameMovementSpeed;
 
         // Flip the sprite if moving the opposite way
-        if (movementVector.x > 0)
-        {
-            transform.localScale = Vector3.one;
-        }
-        else if (movementVector.x < 0)
-        {
-            transform.localScale = new Vector3(-1, 1, 1);
-        }
+        //if (movementVector.x > 0)
+        //{
+        //    transform.localScale = Vector3.one;
+        //}
+        //else if (movementVector.x < 0)
+        //{
+        //    transform.localScale = new Vector3(-1, 1, 1);
+        //}
 
         // Move the rigidbody
         rigidbody.velocity = Vector2.ClampMagnitude(movementVector, 1) * frameMovementSpeed * Time.fixedDeltaTime;

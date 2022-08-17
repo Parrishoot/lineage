@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(CircleCollider2D))]
-public abstract class Interactable : MonoBehaviour
+public abstract class Interactable : Flipper
 {
 
     protected enum INTERACTION_STATE
