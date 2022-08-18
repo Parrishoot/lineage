@@ -5,10 +5,9 @@ using System.Linq;
 
 public class InputManager : Singleton<InputManager>
 {
+    public List<InputAction> inputs;
 
-    public int something;
-
-    public Dictionary<ACTION, KeyCode> inputKeys = new Dictionary<ACTION, KeyCode>();
+    public Dictionary<ACTION, InputAction> inputKeys = new Dictionary<ACTION, InputAction>();
 
     private Dictionary<ACTION, float> keyCooldowns = new Dictionary<ACTION, float>();
 
@@ -17,7 +16,8 @@ public class InputManager : Singleton<InputManager>
         DASH,
         SHOOT,
         INTERACT,
-        DIALOGUE_CONTINUE
+        DIALOGUE_CONTINUE,
+        PAUSE
     }
 
     // Start is called before the first frame update
@@ -31,7 +31,6 @@ public class InputManager : Singleton<InputManager>
     {
         // TODO: This is a hack for now I hate having to loop
         // Through these keys twice it feels so dirty
-        List<ACTION> keysToRemove = new List<ACTION>();
         foreach(ACTION action in keyCooldowns.Keys.ToList())
         {
             keyCooldowns[action] -= Time.deltaTime;
@@ -44,7 +43,17 @@ public class InputManager : Singleton<InputManager>
 
     public bool GetKeyDown(ACTION action)
     {
-        return Input.GetKeyDown(inputKeys[action]);
+        InputAction inputAction = inputKeys[action];
+
+        if(!PauseMenuManager.GetInstance().IsPaused() || inputAction.allowWhilePaused)
+        {
+            return Input.GetKeyDown(inputAction.keyCode);
+        }
+        else
+        {
+            return false;
+        }
+        
     }
 
     public bool GetKeyDownWithCooldown(ACTION action)
@@ -61,7 +70,16 @@ public class InputManager : Singleton<InputManager>
 
     public bool GetKeyUp(ACTION action)
     {
-        return Input.GetKeyUp(inputKeys[action]);
+        InputAction inputAction = inputKeys[action];
+
+        if (!PauseMenuManager.GetInstance().IsPaused() || inputAction.allowWhilePaused)
+        {
+            return Input.GetKeyUp(inputAction.keyCode);
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public bool GetKeyUpWithCooldown(ACTION action)
@@ -78,7 +96,16 @@ public class InputManager : Singleton<InputManager>
 
     public bool GetKey(ACTION action)
     {
-        return Input.GetKey(inputKeys[action]);
+        InputAction inputAction = inputKeys[action];
+
+        if (!PauseMenuManager.GetInstance().IsPaused() || inputAction.allowWhilePaused)
+        {
+            return Input.GetKey(inputAction.keyCode);
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public bool GetKeyWithCooldown(ACTION action)
@@ -105,21 +132,29 @@ public class InputManager : Singleton<InputManager>
          * THIS IS WHERE TO ADD NEW INPUT KEYS 
          * 
          */
-        SetKey(ACTION.DASH, KeyCode.LeftShift);
-        SetKey(ACTION.SHOOT, KeyCode.Mouse0);
-        SetKey(ACTION.INTERACT, KeyCode.E);
-        SetKey(ACTION.DIALOGUE_CONTINUE, KeyCode.Space);
+        foreach(InputAction action in inputs) {
+            SetKey(action.actionType, action);
+        }
     }
 
-    public void SetKey(ACTION action, KeyCode keyCode)
+    public void SetKey(ACTION action, InputAction inputAction)
     {
         if(inputKeys.ContainsKey(action))
         {
-            inputKeys[action] = keyCode;
+            inputKeys[action] = inputAction;
         }
         else
         {
-            inputKeys.Add(action, keyCode);
+            inputKeys.Add(action, inputAction);
         }
     }
+
+    [System.Serializable]
+    public class InputAction
+    {
+        public InputManager.ACTION actionType;
+        public KeyCode keyCode;
+        public bool allowWhilePaused = false;
+    }
 }
+

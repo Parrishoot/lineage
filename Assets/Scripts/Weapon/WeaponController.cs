@@ -49,7 +49,10 @@ public class WeaponController : MonoBehaviour
         
         currentCooldown = Mathf.Max(currentCooldown - Time.deltaTime, 0);
 
-        gameObject.transform.rotation = Quaternion.AngleAxis(-CameraController.getAngleToMouse(gameObject.transform.position) - 90f, Vector3.forward);
+        if(!PauseMenuManager.GetInstance().IsPaused())
+        {
+            gameObject.transform.rotation = Quaternion.AngleAxis(-CameraController.getAngleToMouse(gameObject.transform.position) - 90f, Vector3.forward);
+        }
     }
 
     public void changeWeaponType(WeaponType weaponType)

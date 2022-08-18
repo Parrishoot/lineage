@@ -58,7 +58,6 @@ public class NPCController : Interactable
 
     public void Update()
     {
-        Debug.Log(npcState.ToString());
 
         switch (npcState)
         {
