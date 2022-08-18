@@ -12,9 +12,6 @@ public class QuestManager: MonoBehaviour
 
     private QuestUIController questUIController;
 
-    // TODO: Use this somehow
-    private bool active = false;
-
     public enum QUEST_STATE
     {
         UNDISCOVERED,
@@ -60,7 +57,6 @@ public class QuestManager: MonoBehaviour
 
     public void SetActive()
     {
-        active = true;
         questUIController.Activate();
         GetActiveQuestNodeManager().Activate();
     }
@@ -81,7 +77,6 @@ public class QuestManager: MonoBehaviour
 
     public void Deactivate()
     {
-        active = false;
         questUIController.Deactivate();
     }
 

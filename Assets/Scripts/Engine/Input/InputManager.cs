@@ -9,7 +9,7 @@ public class InputManager : Singleton<InputManager>
 
     public Dictionary<ACTION, InputAction> inputKeys = new Dictionary<ACTION, InputAction>();
 
-    private Dictionary<ACTION, float> keyCooldowns = new Dictionary<ACTION, float>();
+    private CooldownManager cooldownManager;
 
     public enum ACTION
     {
@@ -24,21 +24,7 @@ public class InputManager : Singleton<InputManager>
     void Start()
     {
         InitializeKeys();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        // TODO: This is a hack for now I hate having to loop
-        // Through these keys twice it feels so dirty
-        foreach(ACTION action in keyCooldowns.Keys.ToList())
-        {
-            keyCooldowns[action] -= Time.deltaTime;
-            if(keyCooldowns[action] <= 0)
-            {
-                keyCooldowns.Remove(action);
-            }
-        }
+        cooldownManager = GetComponent<CooldownManager>();
     }
 
     public bool GetKeyDown(ACTION action)
@@ -58,7 +44,7 @@ public class InputManager : Singleton<InputManager>
 
     public bool GetKeyDownWithCooldown(ACTION action)
     {
-        if(keyCooldowns.ContainsKey(action))
+        if(cooldownManager.IsOnCooldown((int) action))
         {
             return false;
         }
@@ -84,7 +70,7 @@ public class InputManager : Singleton<InputManager>
 
     public bool GetKeyUpWithCooldown(ACTION action)
     {
-        if (keyCooldowns.ContainsKey(action))
+        if (cooldownManager.IsOnCooldown((int) action))
         {
             return false;
         }
@@ -110,7 +96,7 @@ public class InputManager : Singleton<InputManager>
 
     public bool GetKeyWithCooldown(ACTION action)
     {
-        if (keyCooldowns.ContainsKey(action))
+        if (cooldownManager.IsOnCooldown((int) action))
         {
             return false;
         }
@@ -122,16 +108,11 @@ public class InputManager : Singleton<InputManager>
 
     public void SetKeyCooldown(ACTION action, float cooldown)
     {
-        keyCooldowns[action] = cooldown;
+        cooldownManager.SetCooldown((int) action, cooldown);
     }
 
     public void InitializeKeys()
     {
-        /*
-         * 
-         * THIS IS WHERE TO ADD NEW INPUT KEYS 
-         * 
-         */
         foreach(InputAction action in inputs) {
             SetKey(action.actionType, action);
         }

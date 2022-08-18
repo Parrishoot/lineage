@@ -28,8 +28,6 @@ public class Saver<T>
         string path = Application.persistentDataPath + filePath;
         if (File.Exists(path))
         {
-            Debug.Log(path);
-
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(path, FileMode.Open);
 
