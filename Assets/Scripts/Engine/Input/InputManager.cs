@@ -9,6 +9,9 @@ public class InputManager : Singleton<InputManager>
 
     public Dictionary<ACTION, InputAction> inputKeys = new Dictionary<ACTION, InputAction>();
 
+    public List<ACTION> fixedInputsDown = new List<ACTION>();
+    public List<ACTION> fixedInputsUp = new List<ACTION>();
+
     private CooldownManager cooldownManager;
 
     public enum ACTION
@@ -20,6 +23,12 @@ public class InputManager : Singleton<InputManager>
         PAUSE
     }
 
+    public enum INPUT_TYPE
+    {
+        DOWN,
+        UP
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,13 +36,38 @@ public class InputManager : Singleton<InputManager>
         cooldownManager = GetComponent<CooldownManager>();
     }
 
-    public bool GetKeyDown(ACTION action)
+    private void Update()
+    {
+        fixedInputsDown.Clear();
+        fixedInputsUp.Clear();
+
+        foreach(ACTION action in inputKeys.Keys)
+        {
+            if(GetKeyDown(action))
+            {
+                fixedInputsDown.Add(action);
+            }
+            if(GetKeyUp(action))
+            {
+                fixedInputsUp.Add(action);
+            }
+        }
+    }
+
+    public bool GetKeyDown(ACTION action, bool fixedUpdate = false)
     {
         InputAction inputAction = inputKeys[action];
 
         if(!PauseMenuManager.GetInstance().IsPaused() || inputAction.allowWhilePaused)
         {
-            return Input.GetKeyDown(inputAction.keyCode);
+            if(!fixedUpdate)
+            {
+                return Input.GetKeyDown(inputAction.keyCode);
+            }
+            else
+            {
+                return fixedInputsDown.Contains(action);
+            }
         }
         else
         {
@@ -42,7 +76,7 @@ public class InputManager : Singleton<InputManager>
         
     }
 
-    public bool GetKeyDownWithCooldown(ACTION action)
+    public bool GetKeyDownWithCooldown(ACTION action, bool fixedUpdate = false)
     {
         if(cooldownManager.IsOnCooldown((int) action))
         {
@@ -54,13 +88,20 @@ public class InputManager : Singleton<InputManager>
         }
     }
 
-    public bool GetKeyUp(ACTION action)
+    public bool GetKeyUp(ACTION action, bool fixedUpdate = false)
     {
         InputAction inputAction = inputKeys[action];
 
         if (!PauseMenuManager.GetInstance().IsPaused() || inputAction.allowWhilePaused)
         {
-            return Input.GetKeyUp(inputAction.keyCode);
+            if (!fixedUpdate)
+            {
+                return Input.GetKeyDown(inputAction.keyCode);
+            }
+            else
+            {
+                return fixedInputsDown.Contains(action);
+            }
         }
         else
         {
@@ -68,7 +109,7 @@ public class InputManager : Singleton<InputManager>
         }
     }
 
-    public bool GetKeyUpWithCooldown(ACTION action)
+    public bool GetKeyUpWithCooldown(ACTION action, bool fixedUpdate = false)
     {
         if (cooldownManager.IsOnCooldown((int) action))
         {

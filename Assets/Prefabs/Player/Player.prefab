@@ -96,16 +96,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcdbfc346ce4e4a45bdc3433261f0377, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flipSpeed: 1200
   baseMovementSpeed: 200
   rigidbody: {fileID: 784399000340467556}
-  dashRampUpPercent: 0.5
-  dashRampDownPercent: 0.5
-  dashTotalTime: 0.15
-  dashCooldown: 0.7
-  dashSpeedMultiplier: 3
+  dashConfig:
+    rampUpPercent: 0.3
+    rampDownPercent: 0.7
+    totalTime: 0.3
+    cooldown: 0.7
+    speedMultiplier: 3
   animator: {fileID: 5414324087380939664}
   sprintParticleSystem: {fileID: 3919093387754426948}
-  flipSpeed: 1200
 --- !u!1 &6111408288189142074
 GameObject:
   m_ObjectHideFlags: 0

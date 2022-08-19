@@ -13,23 +13,13 @@ public class Mover : Flipper
     public float baseMovementSpeed = 1f;
     public new Rigidbody2D rigidbody;
 
-    // Defining a const for if no movement speed override is sent in
-    private const float NO_MOVEMENT_OVERRIDE = -1;
-
-    protected void move(Vector2 movementVector, float frameMovementSpeed=NO_MOVEMENT_OVERRIDE)
+    public void Move(Vector2 movementVector)
     {
-        frameMovementSpeed = frameMovementSpeed == NO_MOVEMENT_OVERRIDE ? baseMovementSpeed : frameMovementSpeed;
+        Move(movementVector, baseMovementSpeed);
+    }
 
-        // Flip the sprite if moving the opposite way
-        //if (movementVector.x > 0)
-        //{
-        //    transform.localScale = Vector3.one;
-        //}
-        //else if (movementVector.x < 0)
-        //{
-        //    transform.localScale = new Vector3(-1, 1, 1);
-        //}
-
+    public void Move(Vector2 movementVector, float frameMovementSpeed)
+    {
         // Move the rigidbody
         rigidbody.velocity = Vector2.ClampMagnitude(movementVector, 1) * frameMovementSpeed * Time.fixedDeltaTime;
     }
