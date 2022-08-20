@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class PlayerBaseState : IGenericUpdateBaseState<PlayerBaseState, PlayerStateController>
+public abstract class PlayerBaseState : IState<PlayerBaseState, PlayerStateController>
 {
 
     public Vector2 GetMovementVector()

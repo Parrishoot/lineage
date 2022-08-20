@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IGenericUpdateBaseState<TState, TStateMachine> 
-    where TState : IGenericUpdateBaseState<TState, TStateMachine>
+public interface IState<TState, TStateMachine> 
+    where TState : IState<TState, TStateMachine>
     where TStateMachine : StateMachine<TState, TStateMachine>
 {
     void EnterState(TStateMachine controller);

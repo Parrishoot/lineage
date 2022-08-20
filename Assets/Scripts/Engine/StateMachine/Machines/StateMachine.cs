@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class StateMachine<TState, TStatemachine> : MonoBehaviour
-    where TState : IGenericUpdateBaseState<TState, TStatemachine>
+    where TState : IState<TState, TStatemachine>
     where TStatemachine: StateMachine<TState, TStatemachine>
 {
     protected TState currentState;
