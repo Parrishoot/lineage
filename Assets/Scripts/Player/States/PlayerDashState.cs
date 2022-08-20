@@ -20,7 +20,7 @@ public class PlayerDashState : PlayerBaseState
     public override void EnterState(PlayerStateController controller)
     {
         time = dashConfig.totalTime;
-        speed = controller.baseMovementSpeed;
+        speed = controller.GetMover().baseMovementSpeed;
 
         InputManager.GetInstance().SetKeyCooldown(InputManager.ACTION.DASH, dashConfig.cooldown);
 
@@ -50,20 +50,20 @@ public class PlayerDashState : PlayerBaseState
         if (time >= (dashConfig.totalTime - rampUpThreshold))
         {
             speed += (rampAcceleration) * Time.fixedDeltaTime;
-            controller.Move(direction, speed);
+            controller.GetMover().Move(direction, speed);
         }
 
         // If we're doing our normal dash, maintain the speed but still move
         else if (time >= rampDownThreshold)
         {
-            controller.Move(direction, speed);
+            controller.GetMover().Move(direction, speed);
         }
 
         // If we're ramping down, slow down
         else if (time >= 0)
         {
             speed -= (rampDeceleration) * Time.fixedDeltaTime;
-            controller.Move(direction, speed);
+            controller.GetMover().Move(direction, speed);
         }
 
         // Otherwise, set us back to our new state
@@ -76,7 +76,7 @@ public class PlayerDashState : PlayerBaseState
             else
             {
                 controller.SwitchState(controller.playerIdleState);
-                controller.Move(movementVector, 0f);
+                controller.GetMover().Move(movementVector, 0f);
                 controller.sprintParticleSystem.Play();
             }
         }

@@ -29,7 +29,7 @@ public abstract class Interactable : Flipper
     {
         if(collision.gameObject.tag == "Player")
         {
-            collision.gameObject.GetComponent<PlayerStateController>().AddInteractable(this);
+            collision.gameObject.GetComponent<Interactor>().AddInteractable(this);
         }
     }
 
@@ -37,7 +37,7 @@ public abstract class Interactable : Flipper
     {
         if (collision.gameObject.tag == "Player")
         {
-            collision.gameObject.GetComponent<PlayerStateController>().RemoveInteractable(this);
+            collision.gameObject.GetComponent<Interactor>().RemoveInteractable(this);
         }
     }
 

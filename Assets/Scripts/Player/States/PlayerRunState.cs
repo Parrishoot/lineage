@@ -23,7 +23,7 @@ public class PlayerRunState : PlayerBaseState
             controller.SwitchState(controller.playerIdleState);
         }
 
-        controller.Move(movementVector);
+        controller.GetMover().Move(movementVector);
     }
 
     public override void UpdateState(PlayerStateController controller)
@@ -33,7 +33,7 @@ public class PlayerRunState : PlayerBaseState
             controller.SetDash(GetMovementVector());
         }
 
-        if (InputManager.GetInstance().GetKeyDown(InputManager.ACTION.INTERACT) && controller.GetCurrentInteractable() != null)
+        if (InputManager.GetInstance().GetKeyDown(InputManager.ACTION.INTERACT) && controller.GetInteractor().GetCurrentInteractable() != null)
         {
             controller.SwitchState(controller.playerInteractState);
         }

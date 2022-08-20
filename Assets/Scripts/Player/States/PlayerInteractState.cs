@@ -6,9 +6,9 @@ public class PlayerInteractState : PlayerBaseState
 {
     public override void EnterState(PlayerStateController controller)
     {
-        controller.rigidbody.velocity = Vector2.zero;
-        CameraController.GetInstance().SetConversation(controller.gameObject, controller.GetCurrentInteractable().gameObject);
-        controller.GetCurrentInteractable().Interact();
+        controller.GetMover().rigidbody.velocity = Vector2.zero;
+        CameraController.GetInstance().SetConversation(controller.gameObject, controller.GetInteractor().GetCurrentInteractable().gameObject);
+        controller.GetInteractor().GetCurrentInteractable().Interact();
 
         controller.animator.SetInteger(PlayerStateController.ANIMATOR_MOVEMENT_PARAMETER_NAME, (int)PlayerStateController.PLAYER_STATE.INTERACTING);
     }
@@ -25,7 +25,7 @@ public class PlayerInteractState : PlayerBaseState
 
     public override void UpdateState(PlayerStateController controller)
     {
-        if (controller.GetCurrentInteractable() == null || controller.GetCurrentInteractable().InteractionFinished())
+        if (controller.GetInteractor().GetCurrentInteractable() == null || controller.GetInteractor().GetCurrentInteractable().InteractionFinished())
         {
             controller.AttachCamera();
             controller.SwitchState(controller.playerIdleState);

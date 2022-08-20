@@ -6,6 +6,7 @@ public class PlayerIdleState : PlayerBaseState
 {
     public override void EnterState(PlayerStateController controller)
     {
+        Debug.Log("Idle!");
         controller.animator.SetInteger(PlayerStateController.ANIMATOR_MOVEMENT_PARAMETER_NAME, (int) PlayerStateController.PLAYER_STATE.IDLE);
     }
 
@@ -17,6 +18,7 @@ public class PlayerIdleState : PlayerBaseState
     public override void FixedUpdateState(PlayerStateController controller)
     {
         Vector2 movementVector = GetMovementVector();
+        Debug.Log(movementVector);
 
         if (!movementVector.Equals(Vector2.zero))
         {
@@ -32,7 +34,7 @@ public class PlayerIdleState : PlayerBaseState
             controller.SetDash(Vector2.right);
         }
 
-        if (InputManager.GetInstance().GetKeyDown(InputManager.ACTION.INTERACT) && controller.GetCurrentInteractable() != null)
+        if (InputManager.GetInstance().GetKeyDown(InputManager.ACTION.INTERACT) && controller.GetInteractor().GetCurrentInteractable() != null)
         {
             controller.SwitchState(controller.playerInteractState);
         }

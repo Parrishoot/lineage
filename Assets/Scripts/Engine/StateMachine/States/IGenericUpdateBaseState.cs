@@ -2,11 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IGenericUpdateBaseState<T>
+public interface IGenericUpdateBaseState<TState, TStateMachine> 
+    where TState : IGenericUpdateBaseState<TState, TStateMachine>
+    where TStateMachine : StateMachine<TState, TStateMachine>
 {
-    void EnterState(T controller);
+    void EnterState(TStateMachine controller);
 
-    void UpdateState(T controller);
+    void UpdateState(TStateMachine controller);
 
-    void ExitState(T controller);
+    void FixedUpdateState(TStateMachine controller);
+
+    void ExitState(TStateMachine controller);
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStateController : Mover
+public class PlayerStateController : StateMachine<PlayerBaseState, PlayerStateController>
 {
 
     public enum PLAYER_STATE
@@ -19,8 +19,6 @@ public class PlayerStateController : Mover
     // DASH variables
     public DashConfig dashConfig;
 
-    private PlayerBaseState currentState;
-
     public PlayerIdleState playerIdleState;
     public PlayerRunState playerRunState;
     public PlayerDashState playerDashState;
@@ -32,11 +30,15 @@ public class PlayerStateController : Mover
     // Sprint particles
     public ParticleSystem sprintParticleSystem;
 
-    private Interactable interactable = null;
+    private Interactor interactor;
+    private Mover mover;
 
-    private void Start()
+    public override void Start()
     {
         AttachCamera();
+
+        interactor = GetComponent<Interactor>();
+        mover = GetComponent<Mover>();
 
         playerIdleState = new PlayerIdleState();
         playerRunState = new PlayerRunState();
@@ -44,34 +46,10 @@ public class PlayerStateController : Mover
         playerInteractState = new PlayerInteractState();
 
         currentState = playerIdleState;
-        currentState.EnterState(this);
 
         tag = PLAYER_TAG;
-    }
 
-    public void Update()
-    {
-        currentState.UpdateState(this);
-
-        float target = 180 - (Mathf.Sign(CameraController.GetVectorToMouse(transform.position).x) + 1) * 90;
-        SetFlip(target, Time.fixedDeltaTime);
-    }
-
-    // Update is called once per frame
-    public void FixedUpdate()
-    {
-
-        currentState.FixedUpdateState(this);
-        
-    }
-
-    public void AddInteractable(Interactable interactable)
-    // TODO: Change this to be a trigger on the player instead of the 
-    // objects such that we can queue up interactable objects and set an
-    // active one rather than resetting this potentially in the middle 
-    // of an interaction
-    {
-        this.interactable = interactable;
+        base.Start();
     }
 
     public void SetDash(Vector2 movementVector)
@@ -80,24 +58,14 @@ public class PlayerStateController : Mover
         SwitchState(playerDashState);
     }
 
-    public Interactable GetCurrentInteractable()
+    public Interactor GetInteractor()
     {
-        return interactable;
+        return interactor;
     }
 
-    public void SwitchState(PlayerBaseState newState)
+    public Mover GetMover()
     {
-        currentState.ExitState(this);
-        currentState = newState;
-        currentState.EnterState(this);
-    }
-
-    public void RemoveInteractable(Interactable interactable)
-    {
-        if(this.interactable.Equals(interactable))
-        {
-            this.interactable = null;
-        }
+        return mover;
     }
 
     public void AttachCamera()

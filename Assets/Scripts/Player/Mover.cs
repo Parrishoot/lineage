@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
 [RequireComponent(typeof(Rigidbody2D))]
 
-public class Mover : Flipper
+public class Mover : MonoBehaviour
 {
 
     // Every mover has a rigidbody and a base movemnt speed
