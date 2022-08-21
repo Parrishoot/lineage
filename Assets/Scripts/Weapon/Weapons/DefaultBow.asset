@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DefaultBow
   m_EditorClassIdentifier: 
   cooldown: 0.3
-  sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  sprite: {fileID: 21300000, guid: 9cc526e1d7b5ff54a8bebd280d51f556, type: 3}
   totalAmmo: -1
   ammoPerClip: -1
   projectileType: {fileID: 11400000, guid: ac680e23543aca144a228922951c3d28, type: 2}

@@ -96,7 +96,7 @@ public class InputManager : Singleton<InputManager>
         {
             if (!fixedUpdate)
             {
-                return Input.GetKeyDown(inputAction.keyCode);
+                return Input.GetKeyUp(inputAction.keyCode);
             }
             else
             {
