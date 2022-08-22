@@ -8,7 +8,7 @@ public class BowFiringState : BowBaseState
     {
         InputManager.GetInstance().SetKeyCooldown(InputManager.ACTION.SHOOT, controller.cooldown);
 
-        controller.animator.SetInteger(BowController.ANIMATION_STATE_NAME, 1);
+        controller.animator.SetInteger(BowController.ANIMATION_STATE_NAME, 2);
     }
 
     public override void ExitState(BowController controller)

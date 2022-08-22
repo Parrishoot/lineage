@@ -6,7 +6,7 @@ public class BowFullyChargedState : BowBaseState
 {
     public override void EnterState(BowController controller)
     {
-        controller.SetColor(Color.red);
+        controller.animator.SetInteger(BowController.ANIMATION_STATE_NAME, 1);
     }
 
     public override void ExitState(BowController controller)
