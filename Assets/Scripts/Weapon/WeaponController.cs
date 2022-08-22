@@ -2,21 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(SpriteRenderer))]
-
 public abstract class WeaponController<TState, TController> : StateMachine<TState, TController>
     where TState: WeaponBaseState<TState, TController>
     where TController: WeaponController<TState, TController>
 {
     public float cooldown = 1f;
     
-    protected SpriteRenderer spriteRenderer;
+    public SpriteRenderer spriteRenderer;
+    public Animator animator;
 
     public abstract bool IsAiming();
 
     public virtual float GetAimingAngle()
     {
-        return gameObject.transform.eulerAngles.y;
+        return gameObject.transform.eulerAngles.z;
     }
 
     public virtual void SetInvisible()
@@ -31,8 +30,6 @@ public abstract class WeaponController<TState, TController> : StateMachine<TStat
 
     public override void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-
         base.Start();
     }
 
@@ -47,7 +44,22 @@ public abstract class WeaponController<TState, TController> : StateMachine<TStat
     {
         if (!PauseMenuManager.GetInstance().IsPaused())
         {
-            gameObject.transform.rotation = Quaternion.AngleAxis(-CameraController.getAngleToMouse(gameObject.transform.position) - 270f, Vector3.forward);
+            gameObject.transform.rotation  = Quaternion.Euler(0,
+                                                              0,
+                                                              -CameraController.getAngleToMouse(gameObject.transform.position) - 270f);
+
+            if (GetAimingAngle() <= 270 && GetAimingAngle() >= 90)
+            {
+                transform.localScale = new Vector3(transform.localScale.x,
+                                                   -1,
+                                                   transform.localScale.z);
+            }
+            else
+            {
+                transform.localScale = new Vector3(transform.localScale.x,
+                                                   1,
+                                                   transform.localScale.z);
+            }
         }
     }
 }

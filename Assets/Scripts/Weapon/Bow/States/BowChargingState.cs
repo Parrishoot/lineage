@@ -10,6 +10,8 @@ public class BowChargingState : BowBaseState
     public override void EnterState(BowController controller)
     {
         controller.SetVisible();
+        controller.animator.SetInteger(BowController.ANIMATION_STATE_NAME, 0);
+
         currentCharge = 0f;
     }
 

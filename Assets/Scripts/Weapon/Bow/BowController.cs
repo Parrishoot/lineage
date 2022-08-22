@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BowController : WeaponController<BowBaseState, BowController>
 {
+    public static string ANIMATION_STATE_NAME = "bowState";
+
     public float timeToCharge = 2f;
 
     public BowIdleState bowIdleState = new BowIdleState();
@@ -13,7 +15,7 @@ public class BowController : WeaponController<BowBaseState, BowController>
 
     public override bool IsAiming()
     {
-        return false;
+        return currentState != bowIdleState;
     }
 
     public override void Start()
@@ -21,6 +23,11 @@ public class BowController : WeaponController<BowBaseState, BowController>
         currentState = bowIdleState;
 
         base.Start();
+    }
+
+    public override void Update()
+    {
+        base.Update();
     }
 
     public void SetColor(Color color)

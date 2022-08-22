@@ -6,11 +6,9 @@ public class BowFiringState : BowBaseState
 {
     public override void EnterState(BowController controller)
     {
-        Debug.Log("Firing!");
-
         InputManager.GetInstance().SetKeyCooldown(InputManager.ACTION.SHOOT, controller.cooldown);
 
-        controller.SwitchState(controller.bowIdleState);
+        controller.animator.SetInteger(BowController.ANIMATION_STATE_NAME, 1);
     }
 
     public override void ExitState(BowController controller)
@@ -25,6 +23,9 @@ public class BowFiringState : BowBaseState
 
     public override void UpdateState(BowController controller)
     {
-
+        if(controller.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+        {
+            controller.SwitchState(controller.bowIdleState);
+        }
     }
 }

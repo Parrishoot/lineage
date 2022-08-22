@@ -6,8 +6,6 @@ public class BowFullyChargedState : BowBaseState
 {
     public override void EnterState(BowController controller)
     {
-        Debug.Log("Fully Charged!");
-
         controller.SetColor(Color.red);
     }
 
