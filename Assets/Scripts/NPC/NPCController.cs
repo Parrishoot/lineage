@@ -142,7 +142,7 @@ public class NPCController : Interactable
         navMeshAgent.isStopped = true;
 
         // Look at the player as they're talking to you
-        flipTarget = 180 - (Mathf.Sign(GameObject.FindGameObjectWithTag(PlayerStateController.PLAYER_TAG).gameObject.transform.position.x - transform.position.x) + 1) * 90;
+        flipTarget = 180 - (Mathf.Sign(GameObject.FindGameObjectWithTag(PlayerMeta.PLAYER_TAG).gameObject.transform.position.x - transform.position.x) + 1) * 90;
 
         if (questDialogue.Count > 0)
         {

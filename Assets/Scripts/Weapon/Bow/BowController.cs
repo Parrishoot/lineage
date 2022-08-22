@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BowController : WeaponController<BowBaseState, BowController>
+public class BowController : WeaponController<BowController>
 {
     public static string ANIMATION_STATE_NAME = "bowState";
 

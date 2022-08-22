@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StateMachine<TState, TStatemachine> : MonoBehaviour
-    where TState : IState<TState, TStatemachine>
-    where TStatemachine: StateMachine<TState, TStatemachine>
+public class StateMachine<TStatemachine> : MonoBehaviour
+    where TStatemachine: StateMachine<TStatemachine>
 {
-    protected TState currentState;
+    protected IState<TStatemachine> currentState;
 
     // Start is called before the first frame update
     public virtual void Start()
@@ -25,9 +24,17 @@ public class StateMachine<TState, TStatemachine> : MonoBehaviour
         currentState.FixedUpdateState((TStatemachine) this);
     }
 
-    public void SwitchState(TState newState)
+    public void SwitchState(IState<TStatemachine> newState)
     {
-       currentState.ExitState((TStatemachine) this);
+       if(currentState != null)
+       {
+            currentState.ExitState((TStatemachine) this);
+       }
+       else
+       {
+            Debug.Log("Current State is Null");
+       }
+
        currentState = newState;
        currentState.EnterState((TStatemachine) this);
     }

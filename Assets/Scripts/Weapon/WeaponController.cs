@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class WeaponController<TState, TController> : StateMachine<TState, TController>
-    where TState: WeaponBaseState<TState, TController>
-    where TController: WeaponController<TState, TController>
+public abstract class WeaponController<TStateMachine> : StateMachine<TStateMachine>
+    where TStateMachine: WeaponController<TStateMachine>
 {
     public float cooldown = 1f;
     

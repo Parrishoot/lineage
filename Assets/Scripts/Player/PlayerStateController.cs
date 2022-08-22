@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStateController : StateMachine<PlayerBaseState, PlayerStateController>
+public class PlayerStateController<TStateMachine>: StateMachine<TStateMachine>
+    where TStateMachine: PlayerStateController<TStateMachine>
 {
 
     public enum PLAYER_STATE
@@ -10,19 +11,17 @@ public class PlayerStateController : StateMachine<PlayerBaseState, PlayerStateCo
         IDLE,
         RUNNING,
         DASHING,
-        INTERACTING
+        INTERACTING,
+        AIM
     }
-
-    public const string PLAYER_TAG = "Player";
-    public const string ANIMATOR_MOVEMENT_PARAMETER_NAME = "playerMovementState";
 
     // DASH variables
     public DashConfig dashConfig;
 
-    public PlayerIdleState playerIdleState;
-    public PlayerRunState playerRunState;
-    public PlayerDashState playerDashState;
-    public PlayerInteractState playerInteractState;
+    public PlayerIdleState<TStateMachine> playerIdleState = new PlayerIdleState<TStateMachine>();
+    public PlayerRunState<TStateMachine> playerRunState = new PlayerRunState<TStateMachine>();
+    public PlayerDashState<TStateMachine> playerDashState;
+    public PlayerInteractState<TStateMachine> playerInteractState = new PlayerInteractState<TStateMachine>();
 
     // Set the animator
     public Animator animator;
@@ -40,22 +39,13 @@ public class PlayerStateController : StateMachine<PlayerBaseState, PlayerStateCo
         interactor = GetComponent<Interactor>();
         mover = GetComponent<Mover>();
 
-        playerIdleState = new PlayerIdleState();
-        playerRunState = new PlayerRunState();
-        playerDashState = new PlayerDashState(dashConfig);
-        playerInteractState = new PlayerInteractState();
+        playerDashState = new PlayerDashState<TStateMachine>(dashConfig);
 
         currentState = playerIdleState;
 
-        tag = PLAYER_TAG;
+        tag = PlayerMeta.PLAYER_TAG;
 
         base.Start();
-    }
-
-    public void SetDash(Vector2 movementVector)
-    {
-        playerDashState.direction = movementVector;
-        SwitchState(playerDashState);
     }
 
     public Interactor GetInteractor()
@@ -71,5 +61,11 @@ public class PlayerStateController : StateMachine<PlayerBaseState, PlayerStateCo
     public void AttachCamera()
     {
         CameraController.GetInstance().AttachCameraAnchor(gameObject);
+    }
+
+    public void SetDash(Vector2 movementVector)
+    {
+        playerDashState.direction = movementVector;
+        SwitchState(playerDashState);
     }
 }

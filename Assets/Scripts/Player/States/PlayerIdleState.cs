@@ -2,19 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerIdleState : PlayerBaseState
+public class PlayerIdleState<TStateMachine> : PlayerBaseState<TStateMachine>
+    where TStateMachine : PlayerStateController<TStateMachine>
 {
-    public override void EnterState(PlayerStateController controller)
+    public override void EnterState(TStateMachine controller)
     {
-        controller.animator.SetInteger(PlayerStateController.ANIMATOR_MOVEMENT_PARAMETER_NAME, (int) PlayerStateController.PLAYER_STATE.IDLE);
+        controller.animator.SetInteger(PlayerMeta.ANIMATOR_MOVEMENT_PARAMETER_NAME, (int) PlayerStateController<TStateMachine>.PLAYER_STATE.IDLE);
     }
 
-    public override void ExitState(PlayerStateController controller)
+    public override void ExitState(TStateMachine controller)
     {
         
     }
 
-    public override void FixedUpdateState(PlayerStateController controller)
+    public override void FixedUpdateState(TStateMachine controller)
     {
         Vector2 movementVector = GetMovementVector();
 
@@ -25,7 +26,7 @@ public class PlayerIdleState : PlayerBaseState
         }
     }
 
-    public override void UpdateState(PlayerStateController controller)
+    public override void UpdateState(TStateMachine controller)
     {
         if (InputManager.GetInstance().GetKeyDown(InputManager.ACTION.DASH))
         {

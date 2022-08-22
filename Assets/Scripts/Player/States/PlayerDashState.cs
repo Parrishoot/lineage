@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerDashState : PlayerBaseState
+public class PlayerDashState<TStateMachine> : PlayerBaseState<TStateMachine>
+    where TStateMachine : PlayerStateController<TStateMachine>
 {
 
     public Vector2 direction;
@@ -17,22 +18,22 @@ public class PlayerDashState : PlayerBaseState
         this.dashConfig = dashConfig;
     }
 
-    public override void EnterState(PlayerStateController controller)
+    public override void EnterState(TStateMachine controller)
     {
         time = dashConfig.totalTime;
         speed = controller.GetMover().baseMovementSpeed;
 
         InputManager.GetInstance().SetKeyCooldown(InputManager.ACTION.DASH, dashConfig.cooldown);
 
-        controller.animator.SetInteger(PlayerStateController.ANIMATOR_MOVEMENT_PARAMETER_NAME, (int) PlayerStateController.PLAYER_STATE.DASHING);
+        controller.animator.SetInteger(PlayerMeta.ANIMATOR_MOVEMENT_PARAMETER_NAME, (int) PlayerStateController<TStateMachine>.PLAYER_STATE.DASHING);
     }
 
-    public override void ExitState(PlayerStateController controller)
+    public override void ExitState(TStateMachine controller)
     {
         
     }
 
-    public override void FixedUpdateState(PlayerStateController controller)
+    public override void FixedUpdateState(TStateMachine controller)
     {
         Vector2 movementVector = GetMovementVector();
 
@@ -83,7 +84,7 @@ public class PlayerDashState : PlayerBaseState
 
     }
 
-    public override void UpdateState(PlayerStateController controller)
+    public override void UpdateState(TStateMachine controller)
     {
         
     }

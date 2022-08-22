@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class WeaponBaseState<TState, TController> : IState<TState, TController>
-    where TState: WeaponBaseState<TState, TController>
-    where TController: WeaponController<TState, TController>
+public abstract class WeaponBaseState<TController> : IState<TController>
+    where TController: WeaponController<TController>
 {
     public abstract void EnterState(TController controller);
     public abstract void ExitState(TController controller);

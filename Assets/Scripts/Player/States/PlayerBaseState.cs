@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class PlayerBaseState : IState<PlayerBaseState, PlayerStateController>
+public abstract class PlayerBaseState<TStateMachine>: IState<TStateMachine>
+    where TStateMachine: PlayerStateController<TStateMachine>
 {
 
     public Vector2 GetMovementVector()
@@ -15,8 +16,8 @@ public abstract class PlayerBaseState : IState<PlayerBaseState, PlayerStateContr
         return Vector2.ClampMagnitude(new Vector2(x, y), 1);
     }
 
-    public abstract void EnterState(PlayerStateController controller);
-    public abstract void ExitState(PlayerStateController controller);
-    public abstract void FixedUpdateState(PlayerStateController controller);
-    public abstract void UpdateState(PlayerStateController controller);
+    public abstract void EnterState(TStateMachine controller);
+    public abstract void ExitState(TStateMachine controller);
+    public abstract void FixedUpdateState(TStateMachine controller);
+    public abstract void UpdateState(TStateMachine controller);
 }

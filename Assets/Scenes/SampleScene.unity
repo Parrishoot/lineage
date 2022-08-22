@@ -23593,8 +23593,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ComponentVersion: 1
   m_AssetsPPU: 16
-  m_RefResolutionX: 240
-  m_RefResolutionY: 135
+  m_RefResolutionX: 272
+  m_RefResolutionY: 153
   m_CropFrame: 0
   m_GridSnapping: 0
   m_UpscaleRT: 0
@@ -24104,7 +24104,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3052385154167390400, guid: f4df1fac275a6db44bfe1434873c90fd, type: 3}
       propertyPath: orthographic size
-      value: 4.21875
+      value: 4.821429
       objectReference: {fileID: 0}
     - target: {fileID: 3052385154167390400, guid: f4df1fac275a6db44bfe1434873c90fd, type: 3}
       propertyPath: m_OcclusionCulling
@@ -24300,7 +24300,8 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3604994094341749672, guid: 4d2fc839de4f0cb489e6c234b93123c4, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4d2fc839de4f0cb489e6c234b93123c4, type: 3}
 --- !u!1001 &7561697265135950789
 PrefabInstance:
