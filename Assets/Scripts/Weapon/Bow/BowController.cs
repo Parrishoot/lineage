@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BowController : WeaponController<BowController>
+public class BowController : WeaponStateController<BowController>
 {
     public static string ANIMATION_STATE_NAME = "bowState";
 
@@ -33,5 +33,10 @@ public class BowController : WeaponController<BowController>
     public void SetColor(Color color)
     {
         spriteRenderer.color = color;
+    }
+
+    public override void Reset()
+    {
+        SwitchState(bowIdleState);
     }
 }

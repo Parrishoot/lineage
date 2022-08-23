@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 6111408287473857170}
   - component: {fileID: 7331538750432513888}
   - component: {fileID: 784399000340467556}
-  - component: {fileID: 3604994094341749672}
   - component: {fileID: 2067751668752166802}
   - component: {fileID: 4436588278403285906}
   - component: {fileID: 4045483171877967604}
@@ -88,26 +87,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &3604994094341749672
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6111408287473857171}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcdbfc346ce4e4a45bdc3433261f0377, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dashConfig:
-    rampUpPercent: 0.3
-    rampDownPercent: 0.7
-    totalTime: 0.3
-    cooldown: 0.7
-    speedMultiplier: 3
-  animator: {fileID: 5414324087380939664}
-  sprintParticleSystem: {fileID: 3919093387754426948}
 --- !u!114 &2067751668752166802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,6 +154,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ef15a57da7436246af027cf42f55818, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponObject: {fileID: 927952806080741567}
+  weapon:
+    rid: -2
   dashConfig:
     rampUpPercent: 0.3
     rampDownPercent: 0.7
@@ -183,7 +165,11 @@ MonoBehaviour:
     speedMultiplier: 3
   animator: {fileID: 5414324087380939664}
   sprintParticleSystem: {fileID: 3919093387754426948}
-  bowController: {fileID: 4915567635288716550}
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
 --- !u!1 &6111408288189142074
 GameObject:
   m_ObjectHideFlags: 0
@@ -5205,8 +5191,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2677820791903181543, guid: a7cdc71e0a923904bba3c9f44d2b2560, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a7cdc71e0a923904bba3c9f44d2b2560, type: 3}
+--- !u!1 &927952806080741567 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4403577055668898912, guid: a7cdc71e0a923904bba3c9f44d2b2560, type: 3}
+  m_PrefabInstance: {fileID: 3601866129862135007}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1457979613628730134 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2722336445060319177, guid: a7cdc71e0a923904bba3c9f44d2b2560, type: 3}
@@ -5217,7 +5209,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8488155623152417241, guid: a7cdc71e0a923904bba3c9f44d2b2560, type: 3}
   m_PrefabInstance: {fileID: 3601866129862135007}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 927952806080741567}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e996331cdd082941b95736b20a69c67, type: 3}

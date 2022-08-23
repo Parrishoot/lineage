@@ -2,15 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerGenIRunState : PlayerRunState<PlayerGenIController>
+public class PlayerGenIDashState : PlayerDashState<PlayerGenIController>
 {
-    public override void FixedUpdateState(PlayerGenIController controller)
-    {
-        if(controller.bowController.IsAiming())
-        {
-            controller.SwitchState(controller.playerAimState);
-        }
+    public PlayerGenIDashState(DashConfig dashConfig) : base(dashConfig) { }
 
-        base.FixedUpdateState(controller);
+    public override void EnterState(PlayerGenIController controller)
+    {
+        controller.weapon.Reset();
+
+        base.EnterState(controller);
     }
 }

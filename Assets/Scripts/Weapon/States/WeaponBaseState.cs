@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class WeaponBaseState<TController> : IState<TController>
-    where TController: WeaponController<TController>
+    where TController: WeaponStateController<TController>
 {
     public abstract void EnterState(TController controller);
     public abstract void ExitState(TController controller);

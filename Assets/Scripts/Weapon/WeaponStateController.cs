@@ -2,15 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class WeaponController<TStateMachine> : StateMachine<TStateMachine>
-    where TStateMachine: WeaponController<TStateMachine>
+public abstract class WeaponStateController<TStateMachine> : StateMachine<TStateMachine>, IWeapon
+    where TStateMachine: WeaponStateController<TStateMachine>
 {
     public float cooldown = 1f;
     
     public SpriteRenderer spriteRenderer;
     public Animator animator;
-
-    public abstract bool IsAiming();
 
     public virtual float GetAimingAngle()
     {
@@ -61,4 +59,8 @@ public abstract class WeaponController<TStateMachine> : StateMachine<TStateMachi
             }
         }
     }
+
+    public abstract bool IsAiming();
+
+    public abstract void Reset();
 }

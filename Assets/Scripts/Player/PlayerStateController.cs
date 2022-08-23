@@ -5,6 +5,12 @@ using UnityEngine;
 public class PlayerStateController<TStateMachine>: StateMachine<TStateMachine>
     where TStateMachine: PlayerStateController<TStateMachine>
 {
+    // Hack to get around the interface issue
+
+    public GameObject weaponObject;
+
+    [SerializeField, SerializeReference]
+    public IWeapon weapon;
 
     public enum PLAYER_STATE
     {
@@ -35,6 +41,8 @@ public class PlayerStateController<TStateMachine>: StateMachine<TStateMachine>
     public override void Start()
     {
         AttachCamera();
+
+        weapon = weaponObject.GetComponent<IWeapon>();
 
         interactor = GetComponent<Interactor>();
         mover = GetComponent<Mover>();

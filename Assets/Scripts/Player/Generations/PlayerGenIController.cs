@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class PlayerGenIController : PlayerStateController<PlayerGenIController>
 {
-    public BowController bowController;
-
     public PlayerGenIAimState playerAimState;
 
     public override void Start()
@@ -15,6 +13,7 @@ public class PlayerGenIController : PlayerStateController<PlayerGenIController>
         playerIdleState = new PlayerGenIIdleState();
         playerAimState = new PlayerGenIAimState();
         playerRunState = new PlayerGenIRunState();
+        playerDashState = new PlayerGenIDashState(dashConfig);
 
         currentState = playerIdleState;
 

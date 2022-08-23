@@ -7,6 +7,7 @@ public class BowIdleState : BowBaseState
     public override void EnterState(BowController controller)
     {
         controller.SetInvisible();
+        controller.animator.SetInteger(BowController.ANIMATION_STATE_NAME, 3);
     }
 
     public override void ExitState(BowController controller)

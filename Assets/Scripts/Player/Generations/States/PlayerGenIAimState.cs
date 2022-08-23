@@ -25,7 +25,7 @@ public class PlayerGenIAimState : PlayerBaseState<PlayerGenIController>
         {
             controller.SwitchState(controller.playerIdleState);
         }
-        else if(!controller.bowController.IsAiming())
+        else if(!controller.weapon.IsAiming())
         {
             controller.SwitchState(controller.playerRunState);
         }
@@ -37,7 +37,6 @@ public class PlayerGenIAimState : PlayerBaseState<PlayerGenIController>
     {
         if (InputManager.GetInstance().GetKeyDown(InputManager.ACTION.DASH))
         {
-            controller.bowController.SwitchState(controller.bowController.bowIdleState);
             controller.SetDash(GetMovementVector());
         }
     }

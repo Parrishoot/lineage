@@ -2,20 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerGenIIdleState : PlayerIdleState<PlayerGenIController>
+public class PlayerGenIRunState : PlayerRunState<PlayerGenIController>
 {
     public override void EnterState(PlayerGenIController controller)
     {
         base.EnterState(controller);
     }
 
-    public override void UpdateState(PlayerGenIController controller)
+    public override void FixedUpdateState(PlayerGenIController controller)
     {
-        base.UpdateState(controller);
-
-        if(controller.weapon.IsAiming() && !GetMovementVector().Equals(Vector2.zero))
+        if(controller.weapon.IsAiming())
         {
             controller.SwitchState(controller.playerAimState);
         }
+
+        base.FixedUpdateState(controller);
     }
 }
