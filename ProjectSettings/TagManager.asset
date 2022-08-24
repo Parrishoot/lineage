@@ -48,9 +48,6 @@ TagManager:
   - name: Tilemap
     uniqueID: 154455635
     locked: 0
-  - name: Projectiles
-    uniqueID: 2626253837
-    locked: 0
   - name: Player
     uniqueID: 991638421
     locked: 0
@@ -59,6 +56,9 @@ TagManager:
     locked: 0
   - name: Weapon
     uniqueID: 179618599
+    locked: 0
+  - name: Projectiles
+    uniqueID: 2626253837
     locked: 0
   - name: UI
     uniqueID: 61971903

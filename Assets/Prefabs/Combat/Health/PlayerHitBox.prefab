@@ -1,0 +1,97 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &8461965424648249753
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -6199041257856844121, guid: cb0d84e8b0fc811499ad8843c53599f8, type: 3}
+      propertyPath: health
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -2031751239572445127, guid: cb0d84e8b0fc811499ad8843c53599f8, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 205858321031928860, guid: cb0d84e8b0fc811499ad8843c53599f8, type: 3}
+      propertyPath: m_Name
+      value: PlayerHitBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 205858321031928862, guid: cb0d84e8b0fc811499ad8843c53599f8, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 205858321031928862, guid: cb0d84e8b0fc811499ad8843c53599f8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 205858321031928862, guid: cb0d84e8b0fc811499ad8843c53599f8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 205858321031928862, guid: cb0d84e8b0fc811499ad8843c53599f8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 205858321031928862, guid: cb0d84e8b0fc811499ad8843c53599f8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 205858321031928862, guid: cb0d84e8b0fc811499ad8843c53599f8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 205858321031928862, guid: cb0d84e8b0fc811499ad8843c53599f8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 205858321031928862, guid: cb0d84e8b0fc811499ad8843c53599f8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 205858321031928862, guid: cb0d84e8b0fc811499ad8843c53599f8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 205858321031928862, guid: cb0d84e8b0fc811499ad8843c53599f8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 205858321031928862, guid: cb0d84e8b0fc811499ad8843c53599f8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cb0d84e8b0fc811499ad8843c53599f8, type: 3}
+--- !u!114 &6671630302289878846 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -6199041257856844121, guid: cb0d84e8b0fc811499ad8843c53599f8, type: 3}
+  m_PrefabInstance: {fileID: 8461965424648249753}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8625989455290924421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7291e11102e70248bd378ef80e182e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &8625989455290924421 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 205858321031928860, guid: cb0d84e8b0fc811499ad8843c53599f8, type: 3}
+  m_PrefabInstance: {fileID: 8461965424648249753}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8764001398177814100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8625989455290924421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcf5c12846f147f4d8f2f9eef0a9bb8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthController: {fileID: 6671630302289878846}
+  spriteRenderer: {fileID: 0}
