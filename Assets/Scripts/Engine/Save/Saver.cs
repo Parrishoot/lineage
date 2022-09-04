@@ -26,6 +26,8 @@ public class Saver<T>
     public T Load()
     {
         string path = Application.persistentDataPath + filePath;
+        Debug.Log("Loading: " + path);
+
         if (File.Exists(path))
         {
             BinaryFormatter formatter = new BinaryFormatter();

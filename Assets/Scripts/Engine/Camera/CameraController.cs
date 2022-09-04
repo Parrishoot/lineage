@@ -113,6 +113,11 @@ public class CameraController : Singleton<CameraController>
         return mousePosition - objectPosition;
     }
 
+    public static Vector2 GetMousePosition()
+    {
+        return Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    }
+
     public static float getAngleToMouse(Vector2 objectPosition)
     {
 

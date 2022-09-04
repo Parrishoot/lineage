@@ -7,7 +7,7 @@ public class ConversationQuestNodeManager : QuestNodeManager
 
     private ConversationQuestNodeMetadata metadata;
 
-    private NPCController npcController;
+    private DialogueInteractable dialogueInteractable;
 
     public ConversationQuestNodeManager(ConversationQuestNodeMetadata metadata, QuestNodeUIController questNodeUIController)
     {
@@ -17,11 +17,11 @@ public class ConversationQuestNodeManager : QuestNodeManager
 
     public void AddQuestDialogue()
     {
-        npcController = NPCMasterManager.GetInstance().GetNPCController(metadata.npcType);
+        dialogueInteractable = NPCMasterManager.GetInstance().GetNPCController(metadata.npcType);
 
-        if(npcController != null)
+        if(dialogueInteractable != null)
         {
-            npcController.AddQuestDialogue(metadata.dialogue, this);
+            dialogueInteractable.AddQuestDialogue(metadata.dialogue, this);
         }
     }
 

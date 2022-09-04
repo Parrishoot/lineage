@@ -30,10 +30,6 @@ public class StateMachine<TStatemachine> : MonoBehaviour
        {
             currentState.ExitState((TStatemachine) this);
        }
-       else
-       {
-            Debug.Log("Current State is Null");
-       }
 
        currentState = newState;
        currentState.EnterState((TStatemachine) this);

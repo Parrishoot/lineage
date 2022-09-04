@@ -2,15 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class WeaponStateController<TStateMachine> : StateMachine<TStateMachine>, IWeapon
+public abstract class WeaponStateController<TStateMachine> : StateMachine<TStateMachine>
     where TStateMachine: WeaponStateController<TStateMachine>
 {
-    public float cooldown = 1f;
+    public WeaponType weaponType;
+
     
     public SpriteRenderer spriteRenderer;
     public Animator animator;
-
     public ProjectileSpawner projectileSpawner;
+
+    [HideInInspector]
+    public float cooldown;
+
+    [HideInInspector]
+    public int ammoPerClip;
+
+    [HideInInspector]
+    public int totalAmmo;
+
+    [HideInInspector]
+    public ProjectileType projectileType;
 
     public virtual float GetAimingAngle()
     {
@@ -29,48 +41,13 @@ public abstract class WeaponStateController<TStateMachine> : StateMachine<TState
 
     public override void Start()
     {
+        spriteRenderer.sprite = weaponType.sprite;
+        cooldown = weaponType.cooldown;
+        ammoPerClip = weaponType.ammoPerClip;
+        totalAmmo = weaponType.totalAmmo;
+
         base.Start();
     }
 
-    public override void Update()
-    {
-        SetRotation();
-
-        base.Update();
-    }
-
-    public virtual void SetRotation()
-    {
-        if (!PauseMenuManager.GetInstance().IsPaused())
-        {
-            gameObject.transform.rotation  = Quaternion.Euler(0,
-                                                              0,
-                                                              -CameraController.getAngleToMouse(gameObject.transform.position) - 270f);
-
-            if (GetAimingAngle() <= 270 && GetAimingAngle() >= 90)
-            {
-                transform.localScale = new Vector3(transform.localScale.x,
-                                                   -1,
-                                                   transform.localScale.z);
-            }
-            else
-            {
-                transform.localScale = new Vector3(transform.localScale.x,
-                                                   1,
-                                                   transform.localScale.z);
-            }
-        }
-    }
-
-    public void Shoot(HashSet<ProjectileAttribute.ATTRIBUTE> attributes = null)
-    {
-
-        Vector2 direction = CameraController.GetVectorToMouse(gameObject.transform.position).normalized;
-
-        projectileSpawner.SpawnProjectile(direction, attributes);
-    }
-
-    public abstract bool IsAiming();
-
-    public abstract void Reset();
+    public abstract void Shoot(HashSet<ProjectileAttribute.ATTRIBUTE> attributes = null);
 }

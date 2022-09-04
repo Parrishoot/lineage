@@ -9,7 +9,6 @@ public class Spawner : MonoBehaviour
 
     public GameObject SpawnObject()
     {
-        Debug.Log(transform.position);
         return SpawnObject(transform.position);
     }
 

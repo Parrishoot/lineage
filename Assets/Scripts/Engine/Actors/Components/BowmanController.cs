@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Mover))]
 public class BowmanController : MonoBehaviour
 {
-    public BowController bowController;
+    public PlayerBowController bowController;
 
     public Sprite regularSprite;
     public Sprite shootingSprite;
