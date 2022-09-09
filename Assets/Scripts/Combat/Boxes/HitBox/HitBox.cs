@@ -2,47 +2,52 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Requires a hitbox collider
-[RequireComponent(typeof(Collider2D))]
-public class HitBox : Shakeable
+public class HitBox : MonoBehaviour
 {
 
-    public HealthController healthController;
+    public IHitBoxParent hitBoxParent;
 
-    public SpriteRenderer spriteRenderer;
-
-    private const float FLASH_ITERATION_TIME = .1f;
-    
-    public virtual void Start()
+    public enum HIT_BOX_TARGET_TYPE
     {
-        if(healthController == null)
+        ENEMY,
+        PLAYER
+    }
+
+    public HIT_BOX_TARGET_TYPE hitBoxTargetType;
+
+    public void Start()
+    {
+        if(hitBoxParent == null)
         {
-            healthController = gameObject.GetComponent<HealthController>();
+            hitBoxParent = GetComponentInParent<IHitBoxParent>();
         }
     }
 
-    public void TakeDamage(float damage)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
-
-        healthController.Damage(damage);
-
-        if(!healthController.IsDead())
+        switch (hitBoxTargetType)
         {
-            StartCoroutine(FlashDamageColor());
-        }
-    }
-   
-    IEnumerator FlashDamageColor()
-    {
-        SetShake();
+            case HIT_BOX_TARGET_TYPE.PLAYER:
 
-        while(IsShaking())
-        {
-            spriteRenderer.color = Color.red;
-            yield return new WaitForSeconds(FLASH_ITERATION_TIME);
-            spriteRenderer.color = Color.white;
-            yield return new WaitForSeconds(FLASH_ITERATION_TIME);
+                PlayerHurtBox playerHurtBox = collision.gameObject.GetComponent<PlayerHurtBox>();
+
+                if (playerHurtBox != null)
+                {
+                    playerHurtBox.TakeDamage(hitBoxParent.OnDamageGiven(playerHurtBox));
+                }
+
+                break;
+
+            case HIT_BOX_TARGET_TYPE.ENEMY:
+
+                EnemyHurtBox enemyHurtBox = collision.gameObject.GetComponent<EnemyHurtBox>();
+
+                if (enemyHurtBox != null)
+                {
+                    enemyHurtBox.TakeDamage(hitBoxParent.OnDamageGiven(enemyHurtBox));
+                }
+
+                break;
         }
-        spriteRenderer.color = Color.white;
     }
 }

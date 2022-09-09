@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHitBox : HitBox
+public interface IHitBoxParent
 {
-
+    public float OnDamageGiven(HurtBox hurtBox);
 }

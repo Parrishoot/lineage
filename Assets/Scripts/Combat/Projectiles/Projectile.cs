@@ -2,17 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
+public class Projectile : MonoBehaviour, IHitBoxParent
 {
-    public enum PROJECTILE_TARGET_TYPE
+    public ProjectileType projectileType;
+
+    private enum PROJECTILE_STATE
     {
-        ENEMY,
-        PLAYER
+        PENDING,
+        INITIALIZED,
+        FIRING,
+        HIT
     }
 
-    private PROJECTILE_TARGET_TYPE projectileTargetType;
-
-    public ProjectileType projectileType;
+    private PROJECTILE_STATE projectileState = PROJECTILE_STATE.PENDING;
 
     private HashSet<ProjectileAttribute.ATTRIBUTE> appliedAttributes = new HashSet<ProjectileAttribute.ATTRIBUTE>();
 
@@ -37,19 +39,18 @@ public class Projectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (initialized)
+        if (projectileState == PROJECTILE_STATE.FIRING)
         {
             UpdateProjectile();
         }
     }
 
-    public void Init(Vector2 moveDirection, PROJECTILE_TARGET_TYPE newProjectileTargetType, HashSet<ProjectileAttribute.ATTRIBUTE> additionalAttributes = null)
+    public void Init(Vector2 moveDirection, HashSet<ProjectileAttribute.ATTRIBUTE> additionalAttributes = null)
     {
         // Initialize the projectile variables
         direction = moveDirection;
         currentSpawnTime = projectileType.timeBeforeDespawn;
         speed = projectileType.speed;
-        projectileTargetType = newProjectileTargetType;
 
         // Rotate towards aiming position
         transform.rotation = Quaternion.AngleAxis(-CameraController.getAngleToMouse(gameObject.transform.position), Vector3.forward);
@@ -63,13 +64,13 @@ public class Projectile : MonoBehaviour
         manageAttributes(allAttributes);
 
         // Set the projectile initialized
-        initialized = true;
+        projectileState = PROJECTILE_STATE.FIRING;
 
     }
 
     private void manageAttributes(HashSet<ProjectileAttribute.ATTRIBUTE> allAttributes)
     {
-        foreach(ProjectileAttribute.ATTRIBUTE attribute in allAttributes)
+        foreach (ProjectileAttribute.ATTRIBUTE attribute in allAttributes)
         {
             switch (attribute)
             {
@@ -77,43 +78,32 @@ public class Projectile : MonoBehaviour
                     speed *= 4;
                     break;
 
-                // TODO: ADD MORE CASES FOR NEW ATTRIBUTES
+                    // TODO: ADD MORE CASES FOR NEW ATTRIBUTES
             }
 
             appliedAttributes.Add(attribute);
         }
     }
 
-    public void OnTriggerEnter2D(Collider2D collision)
-    {
-        switch (projectileTargetType)
-        {
-            case PROJECTILE_TARGET_TYPE.PLAYER:
-                
-                PlayerHitBox playerHitBox = collision.gameObject.GetComponent<PlayerHitBox>();
-
-                if(playerHitBox != null)
-                {
-                    playerHitBox.TakeDamage(projectileType.damage);
-                }
-
-                break;
-
-            case PROJECTILE_TARGET_TYPE.ENEMY:
-
-                EnemyHitBox enemyHitBox = collision.gameObject.GetComponent<EnemyHitBox>();
-
-                if (enemyHitBox != null)
-                {
-                    enemyHitBox.TakeDamage(projectileType.damage);
-                }
-
-                break;
-        }
-    }
     public virtual void Despawn()
     {
         // TODO: ADD MORE TO THIS
         Destroy(gameObject);
+    }
+
+    public float OnDamageGiven(HurtBox hurtBox)
+    {
+        projectileState = PROJECTILE_STATE.HIT;
+
+        gameObject.transform.SetParent(hurtBox.gameObject.transform);
+        StartCoroutine(BeginDespawn());
+
+        return projectileType.damage;
+    }
+
+    IEnumerator BeginDespawn()
+    {
+        yield return new WaitForSeconds(1f);
+        Despawn();
     }
 }

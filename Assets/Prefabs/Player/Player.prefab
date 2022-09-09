@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 4045483171877967604}
   - component: {fileID: 147484887823200968}
   - component: {fileID: 4901958164678569673}
+  - component: {fileID: 1691272640171840565}
+  - component: {fileID: 8658683614343908884}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -156,8 +158,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponObject: {fileID: 927952806080741567}
-  weapon:
-    rid: -2
   dashConfig:
     rampUpPercent: 0.3
     rampDownPercent: 0.7
@@ -165,12 +165,35 @@ MonoBehaviour:
     cooldown: 0.7
     speedMultiplier: 3
   animator: {fileID: 5414324087380939664}
+  healthController: {fileID: 0}
   sprintParticleSystem: {fileID: 3919093387754426948}
-  references:
-    version: 2
-    RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
+--- !u!114 &1691272640171840565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6111408287473857171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c324886ab221afb47985745f93990be4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8658683614343908884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6111408287473857171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7291e11102e70248bd378ef80e182e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 6
+  shaker: {fileID: 1691272640171840565}
+  spriteRenderer: {fileID: 6111408288189142072}
 --- !u!1 &6111408288189142074
 GameObject:
   m_ObjectHideFlags: 0
@@ -5102,11 +5125,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2722336445060319177, guid: a7cdc71e0a923904bba3c9f44d2b2560, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.09
       objectReference: {fileID: 0}
     - target: {fileID: 2722336445060319177, guid: a7cdc71e0a923904bba3c9f44d2b2560, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 0.41
       objectReference: {fileID: 0}
     - target: {fileID: 2722336445060319177, guid: a7cdc71e0a923904bba3c9f44d2b2560, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5196,6 +5219,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 6213199593783757405, guid: a7cdc71e0a923904bba3c9f44d2b2560, type: 3}
+      propertyPath: spawnPrefab
+      value: 
+      objectReference: {fileID: 1274242337646161413, guid: d31d7f6fcfc697d44a238e61dae45d3a, type: 3}
     m_RemovedComponents:
     - {fileID: 2677820791903181543, guid: a7cdc71e0a923904bba3c9f44d2b2560, type: 3}
     - {fileID: 8488155623152417241, guid: a7cdc71e0a923904bba3c9f44d2b2560, type: 3}
@@ -5228,13 +5255,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6111408287473857170}
     m_Modifications:
+    - target: {fileID: 1191109749011142374, guid: 90ad51b3833bb604c994ec6e3e510fc6, type: 3}
+      propertyPath: m_UsedByEffector
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1631206568397162912, guid: 90ad51b3833bb604c994ec6e3e510fc6, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1676854476116435976, guid: 90ad51b3833bb604c994ec6e3e510fc6, type: 3}
+      propertyPath: shaker
+      value: 
+      objectReference: {fileID: 1691272640171840565}
+    - target: {fileID: 1676854476116435976, guid: 90ad51b3833bb604c994ec6e3e510fc6, type: 3}
+      propertyPath: spriteRenderer
+      value: 
+      objectReference: {fileID: 6111408288189142072}
     - target: {fileID: 8625989455290924421, guid: 90ad51b3833bb604c994ec6e3e510fc6, type: 3}
       propertyPath: m_Name
-      value: PlayerHitBox
+      value: PlayerHurtBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625989455290924421, guid: 90ad51b3833bb604c994ec6e3e510fc6, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8625989455290924423, guid: 90ad51b3833bb604c994ec6e3e510fc6, type: 3}
       propertyPath: m_RootOrder

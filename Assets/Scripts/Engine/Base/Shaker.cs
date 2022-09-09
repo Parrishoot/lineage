@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shakeable : MonoBehaviour
+public class Shaker : MonoBehaviour
 {
-    public const float DEFAULT_SHAKE_AMOUNT = .1f;
-    public const float DEFAULT_SHAKE_TIME = .07f;
-    public const float DEFAULT_SHAKE_SPEED = 50f;
+    public const float DEFAULT_SHAKE_AMOUNT = .05f;
+    public const float DEFAULT_SHAKE_TIME = .15f;
+    public const float DEFAULT_SHAKE_SPEED = 100f;
 
     private float currentShakeAmount = DEFAULT_SHAKE_AMOUNT;
     private float currentShakeSpeed = DEFAULT_SHAKE_AMOUNT;

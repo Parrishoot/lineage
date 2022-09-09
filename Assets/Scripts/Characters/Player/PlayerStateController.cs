@@ -2,14 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStateController<TStateMachine>: StateMachine<TStateMachine>
+public class PlayerStateController<TStateMachine>: StateMachine<TStateMachine>, IHurtBoxParent
     where TStateMachine: PlayerStateController<TStateMachine>
 {
     // Hack to get around the interface issue
 
     public GameObject weaponObject;
 
-    [SerializeField, SerializeReference]
     public IWeapon weapon;
 
     public enum PLAYER_STATE
@@ -32,6 +31,9 @@ public class PlayerStateController<TStateMachine>: StateMachine<TStateMachine>
     // Set the animator
     public Animator animator;
 
+    // Health Controller
+    public HealthController healthController;
+
     // Sprint particles
     public ParticleSystem sprintParticleSystem;
 
@@ -46,6 +48,7 @@ public class PlayerStateController<TStateMachine>: StateMachine<TStateMachine>
 
         interactor = GetComponent<Interactor>();
         mover = GetComponent<Mover>();
+        healthController = GetComponent<HealthController>();
 
         playerDashState = new PlayerDashState<TStateMachine>(dashConfig);
 
@@ -75,5 +78,12 @@ public class PlayerStateController<TStateMachine>: StateMachine<TStateMachine>
     {
         playerDashState.direction = movementVector;
         SwitchState(playerDashState);
+    }
+
+    public void OnDamageTaken(float damageTaken)
+    {
+        healthController.Damage(1);
+
+        // TODO: ADD DAMAGE STATE
     }
 }

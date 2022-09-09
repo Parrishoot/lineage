@@ -17,7 +17,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 205858321031928860, guid: cb0d84e8b0fc811499ad8843c53599f8, type: 3}
       propertyPath: m_Name
-      value: PlayerHitBox
+      value: PlayerHurtBox
       objectReference: {fileID: 0}
     - target: {fileID: 205858321031928862, guid: cb0d84e8b0fc811499ad8843c53599f8, type: 3}
       propertyPath: m_RootOrder
@@ -65,23 +65,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb0d84e8b0fc811499ad8843c53599f8, type: 3}
---- !u!114 &6671630302289878846 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: -6199041257856844121, guid: cb0d84e8b0fc811499ad8843c53599f8, type: 3}
-  m_PrefabInstance: {fileID: 8461965424648249753}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8625989455290924421}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7291e11102e70248bd378ef80e182e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8625989455290924421 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 205858321031928860, guid: cb0d84e8b0fc811499ad8843c53599f8, type: 3}
   m_PrefabInstance: {fileID: 8461965424648249753}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8764001398177814100
+--- !u!70 &1191109749011142374
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8625989455290924421}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 1
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.16}
+  m_Size: {x: 1.41, y: 1.21}
+  m_Direction: 0
+--- !u!114 &1676854476116435976
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -90,8 +95,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 8625989455290924421}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcf5c12846f147f4d8f2f9eef0a9bb8e, type: 3}
+  m_Script: {fileID: 11500000, guid: 0cffbe1a234328c4890f73bad9d7123d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthController: {fileID: 6671630302289878846}
+  shaker: {fileID: 0}
   spriteRenderer: {fileID: 0}

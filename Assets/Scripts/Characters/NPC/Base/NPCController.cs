@@ -14,6 +14,7 @@ public class NPCController : Interactable
     [Range(0, 2)]
     public float maxWaitTime = 1f;
 
+
     public enum NPC_STATE
     {
         INTERACTING,
